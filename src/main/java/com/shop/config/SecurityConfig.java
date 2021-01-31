@@ -13,10 +13,10 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter implements Web
         http.authorizeRequests().antMatchers("/**").permitAll();
     }
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("http://localhost:8080")
-                .allowedMethods("*");
-    }
+//    @Override
+//    public void addCorsMappings(CorsRegistry registry) {
+//        registry.addMapping("/**")
+//                .allowedOrigins("http://localhost:8080")
+//                .allowedMethods("*");
+//    }
 }
