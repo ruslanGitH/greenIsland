@@ -1,0 +1,12 @@
+spring.datasource:
+  url: jdbc:postgresql://localhost:5432/greenIsland
+  username: postgres
+  password: 12
+  driver-class-name: org.postgresql.Driver
+
+spring:
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    hibernate.ddl-auto: update
+#    show-sql: true
