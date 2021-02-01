@@ -25,10 +25,5 @@ public class MainControllers {
     public ResponseEntity<?> getCollage(){
         return mainPageService.getCollage();
     }
-    @GetMapping("/pump")
-    public ResponseEntity<?> pump(){
-        return mainPageService.pump();
-    }
-
 
 }

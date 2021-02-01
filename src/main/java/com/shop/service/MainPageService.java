@@ -33,16 +33,4 @@ public class MainPageService {
     public ResponseEntity<?> getCollage() {
         return ResponseEntity.status(HttpStatus.OK).body(collageRepo.findAll());
     }
-
-    public ResponseEntity<?> pump() {
-        Product product = new Product();
-        product.setCategory(null);
-        product.setName("Первый продукт");
-        product.setPrice(1101.1);
-        product.setFamily(null);
-        product.setImage("https://arte1.ru/images/detailed/4/23608.jpg");
-        product.setDescription("Описнаие перовго продукта");
-        productRepo.save(product);
-        return ResponseEntity.status(HttpStatus.OK).body(productRepo.findAll());
-    }
 }

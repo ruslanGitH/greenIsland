@@ -16,6 +16,4 @@ public class Family {
     private String name;
     private String description;
 
-    @OneToMany(mappedBy = "family")
-    private List<Product> productList = new ArrayList<>();
 }

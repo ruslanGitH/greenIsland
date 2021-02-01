@@ -18,11 +18,11 @@ public class Product {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category")
     private Category category;
 
     @ManyToOne
-    @JoinColumn(name = "family_id")
+    @JoinColumn(name = "family")
     private Family family;
 
 
