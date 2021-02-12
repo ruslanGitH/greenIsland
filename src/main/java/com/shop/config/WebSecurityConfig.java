@@ -25,7 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll()  //разрешаем доступ для не авторизованных пользователей
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/admin")
                 .permitAll()
                 .and()
                 .logout()

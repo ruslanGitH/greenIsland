@@ -5,50 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0676e0a1-37dd-4777-8776-9e757cee14bd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/config/WebSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/model/enums/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/shop/service/ClientService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/shop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/GreenIslandApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/GreenIslandApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/config/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/config/SimpleCorsFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/config/SimpleCorsFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/controllers/CatogoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/controllers/CatogoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/controllers/CollageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/controllers/CollageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/controllers/FamilyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/controllers/FamilyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/controllers/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/controllers/ShopInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/controllers/ShopInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/model/entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/model/entity/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/model/entity/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/model/entity/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/model/entity/ClientOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/model/entity/ClientOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/model/entity/Family.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/model/entity/Family.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/model/entity/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/model/entity/Orders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/model/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/model/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/model/entity/ShopInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/model/entity/ShopInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/model/repository/IClientOrderRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/model/repository/IClientOrderRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/model/repository/ICollageRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/model/repository/ICollageRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/model/repository/IFamilyRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/model/repository/IFamilyRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/model/repository/IOrdersRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/model/repository/IOrdersRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/model/repository/IProductRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/model/repository/IProductRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/model/repository/IShopInfoRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/model/repository/IShopInfoRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/service/AdminPageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/service/AdminPageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/service/MainPageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/service/MainPageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/config/SecurityConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/config/SimpleCorsFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/config/SimpleCorsFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/controllers/CatogoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/controllers/CatogoryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/controllers/CollageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/controllers/CollageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/controllers/FamilyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/controllers/FamilyController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/controllers/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/controllers/ProductController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/controllers/ShopInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/controllers/ShopInfoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/model/entity/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/model/entity/Category.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/model/entity/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/model/entity/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/model/entity/Family.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/model/entity/Family.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/model/entity/Orders.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/model/entity/Orders.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/model/entity/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/model/entity/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/model/entity/ShopInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/model/entity/ShopInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/service/AdminPageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/service/AdminPageService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/service/MainPageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/service/MainPageService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +118,7 @@
       <workItem from="1612105253304" duration="392000" />
       <workItem from="1612105836419" duration="1547000" />
       <workItem from="1612109283626" duration="11169000" />
-      <workItem from="1612378943883" duration="47533000" />
+      <workItem from="1612378943883" duration="49729000" />
     </task>
     <task id="LOCAL-00001" summary="controllers created for the main page">
       <created>1612105907538</created>
@@ -310,10 +267,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="561" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1612599071301" />
-    <state x="2382" y="215" width="818" height="592" key="find.popup" timestamp="1613067637666">
-      <screen x="1920" y="0" width="1280" height="984" />
+    <state x="742" y="240" width="881" height="565" key="find.popup" timestamp="1613157652345">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="742" y="240" width="881" height="565" key="find.popup/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1612693304191" />
+    <state x="742" y="240" width="881" height="565" key="find.popup/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1613157652345" />
     <state x="2382" y="215" width="818" height="592" key="find.popup/0.0.1920.1040/1920.0.1280.984@1920.0.1280.984" timestamp="1613067637666" />
     <state x="2335" y="213" width="672" height="642" key="search.everywhere.popup" timestamp="1612199184225">
       <screen x="1920" y="0" width="1280" height="984" />
