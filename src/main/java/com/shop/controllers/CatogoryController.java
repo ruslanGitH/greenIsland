@@ -11,13 +11,13 @@ public class CatogoryController {
     @Autowired
     private AdminPageService adminPageService;
 
-    @RequestMapping(value = "admin/category", method = RequestMethod.POST, produces="application/json", consumes="application/json")
+    @RequestMapping(value = "admin/category", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity<?> saveCategory(@RequestBody Category category) {
         return adminPageService.saveCategory(category);
     }
 
     @RequestMapping(value = "admin/category/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> removeCategory(@PathVariable("id")Long id) {
+    public ResponseEntity<?> removeCategory(@PathVariable("id") Long id) {
         return adminPageService.deleteCategory(id);
     }
 }

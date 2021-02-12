@@ -37,7 +37,7 @@ public class ClientOrder {
 //                        inverseJoinColumns = @JoinColumn(name = "product_id"))
 //    private List<Product> products = new ArrayList<>();
 
-    @OneToMany(mappedBy = "clientOrder" )
+    @OneToMany(mappedBy = "clientOrder")
     private List<Orders> orders = new ArrayList<>();
 
 }

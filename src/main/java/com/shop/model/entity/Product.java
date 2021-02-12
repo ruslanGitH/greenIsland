@@ -3,10 +3,6 @@ package com.shop.model.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.TreeSet;
 
 @Data
 @Entity

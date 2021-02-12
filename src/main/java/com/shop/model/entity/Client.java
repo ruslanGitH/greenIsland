@@ -1,10 +1,15 @@
 package com.shop.model.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonAppend;
+import com.shop.model.enums.PaymentType;
+import com.shop.model.enums.Role;
 import com.sun.istack.NotNull;
 import lombok.Data;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -20,5 +25,14 @@ public class Client {
 
     @OneToMany(mappedBy = "client")
     private List<ClientOrder> clientOrder = new ArrayList<>();
+
+    private String username;
+    private String password;
+    private boolean active;
+
+
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "client"))
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
 }

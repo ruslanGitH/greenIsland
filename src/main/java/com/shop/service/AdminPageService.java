@@ -22,26 +22,31 @@ public class AdminPageService {
     private ICollageRepo collageRepo;
 
 
-    public ResponseEntity<?> saveProduct(@RequestBody Product product) {
+    public ResponseEntity<?> saveProduct(Product product) {
         productRepo.save(product);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
-    public ResponseEntity<?> saveCategory(@RequestBody Category category) {
+
+    public ResponseEntity<?> saveCategory(Category category) {
         categoryRepo.save(category);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
-    public ResponseEntity<?> saveFamily(@RequestBody Family family) {
+
+    public ResponseEntity<?> saveFamily(Family family) {
         familyRepo.save(family);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
-    public ResponseEntity<?> saveShopInfo(@RequestBody ShopInfo shopInfo) {
+
+    public ResponseEntity<?> saveShopInfo(ShopInfo shopInfo) {
         shopInfoRepo.save(shopInfo);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
-    public ResponseEntity<?> saveCollage(@RequestBody Collage collage) {
+
+    public ResponseEntity<?> saveCollage(Collage collage) {
         collageRepo.save(collage);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
+
     public ResponseEntity<?> deleteProduct(Long productId) {
         productRepo.deleteById(productId);
         return ResponseEntity.status(HttpStatus.OK).body(null);
