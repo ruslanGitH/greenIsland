@@ -3,6 +3,7 @@ package com.shop.controllers;
 import com.shop.model.entity.Family;
 import com.shop.service.AdminPageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,5 +22,8 @@ public class FamilyController {
         return adminPageService.deleteFamily(id);
     }
 
-
+    @GetMapping("/family")
+    public ResponseEntity<?> getFamily() {
+        return ResponseEntity.status(HttpStatus.OK).body(adminPageService.getFamily());
+    }
 }

@@ -3,6 +3,7 @@ package com.shop.controllers;
 import com.shop.model.entity.Category;
 import com.shop.service.AdminPageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,5 +20,10 @@ public class CategoryController {
     @RequestMapping(value = "admin/category/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> removeCategory(@PathVariable("id") Long id) {
         return adminPageService.deleteCategory(id);
+    }
+
+    @GetMapping("/category")
+    public ResponseEntity<?> getCategory() {
+        return ResponseEntity.status(HttpStatus.OK).body(adminPageService.getCategory());
     }
 }

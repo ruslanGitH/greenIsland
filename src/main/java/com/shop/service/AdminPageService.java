@@ -21,7 +21,13 @@ public class AdminPageService {
     @Autowired
     private ICollageRepo collageRepo;
 
+    public ResponseEntity<?> getCategory() {
+        return ResponseEntity.status(HttpStatus.OK).body(categoryRepo.findAll());
+    }
 
+    public ResponseEntity<?> getFamily() {
+        return ResponseEntity.status(HttpStatus.OK).body(familyRepo.findAll());
+    }
     public ResponseEntity<?> saveProduct(Product product) {
         productRepo.save(product);
         return ResponseEntity.status(HttpStatus.OK).body(null);
