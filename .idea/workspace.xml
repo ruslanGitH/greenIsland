@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0676e0a1-37dd-4777-8776-9e757cee14bd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/config/SimpleCorsFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/config/SimpleCorsFilter.java" afterDir="false" />
-    </list>
+    <list default="true" id="0676e0a1-37dd-4777-8776-9e757cee14bd" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -118,7 +116,7 @@
       <workItem from="1612105253304" duration="392000" />
       <workItem from="1612105836419" duration="1547000" />
       <workItem from="1612109283626" duration="11169000" />
-      <workItem from="1612378943883" duration="63092000" />
+      <workItem from="1612378943883" duration="63461000" />
     </task>
     <task id="LOCAL-00001" summary="controllers created for the main page">
       <created>1612105907538</created>
