@@ -6,7 +6,11 @@ import com.shop.model.repository.IClientRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.condition.RequestConditionHolder;
+
+import javax.servlet.http.HttpSession;
 
 @RestController
 public class LoginPageController {
@@ -14,10 +18,10 @@ public class LoginPageController {
     IClientRepo clientRepo;
 
     @RequestMapping(value = "login", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    public ResponseEntity<?> saveFamily(@RequestBody Client client) {
+    public ResponseEntity<?> saveFamily(@RequestBody Client client, HttpSession session) {
         Client client1 = clientRepo.findByRole(Role.ADMIN);
         if (client1.getUsername().equals(client.getUsername()) && client.getPassword().equals(client1.getPassword()))
-            return ResponseEntity.status(HttpStatus.OK).body(null);
+            return ResponseEntity.status(HttpStatus.OK).body(session.getId());
         else return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
     }
 }

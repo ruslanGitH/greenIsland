@@ -8,17 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/shop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/config/MvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/config/MvcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/controllers/CatogoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/controllers/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/controllers/CollageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/controllers/CollageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/controllers/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/controllers/LoginPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/model/repository/IClientRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/model/repository/IClientRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/config/MvcConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/config/WebSecurityConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/controllers/CatogoryController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/controllers/CollageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/controllers/CollageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/controllers/LoginPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/controllers/LoginPageController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +121,7 @@
       <workItem from="1612105253304" duration="392000" />
       <workItem from="1612105836419" duration="1547000" />
       <workItem from="1612109283626" duration="11169000" />
-      <workItem from="1612378943883" duration="57478000" />
+      <workItem from="1612378943883" duration="58158000" />
     </task>
     <task id="LOCAL-00001" summary="controllers created for the main page">
       <created>1612105907538</created>
@@ -284,10 +274,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="561" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1612599071301" />
-    <state x="742" y="240" width="881" height="565" key="find.popup" timestamp="1613161756980">
+    <state x="742" y="240" width="881" height="565" key="find.popup" timestamp="1613203446250">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="742" y="240" width="881" height="565" key="find.popup/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1613161756980" />
+    <state x="742" y="240" width="881" height="565" key="find.popup/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1613203446250" />
     <state x="2382" y="215" width="818" height="592" key="find.popup/0.0.1920.1040/1920.0.1280.984@1920.0.1280.984" timestamp="1613067637666" />
     <state x="2335" y="213" width="672" height="642" key="search.everywhere.popup" timestamp="1612199184225">
       <screen x="1920" y="0" width="1280" height="984" />
