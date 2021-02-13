@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface IClientRepo extends CrudRepository<Client, Long> {
-    Client findByRole(Role role);
+   Client findByRole(Role role);
 }

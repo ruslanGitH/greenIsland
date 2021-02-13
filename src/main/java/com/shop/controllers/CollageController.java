@@ -7,8 +7,8 @@ import com.shop.service.MainPageService;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
+//import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -25,7 +25,7 @@ public class CollageController {
 
     @GetMapping("/collage")
     public ResponseEntity<?> getCollage() {
-        ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+//        ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
         return mainPageService.getCollage();
     }
 }
