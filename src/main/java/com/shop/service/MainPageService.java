@@ -28,4 +28,8 @@ public class MainPageService {
     public ResponseEntity<?> getCollage() {
         return ResponseEntity.status(HttpStatus.OK).body(collageRepo.findAll());
     }
+
+    public ResponseEntity<?> getProduct(Long productId) {
+        return ResponseEntity.status(HttpStatus.OK).body(productRepo.findById(productId));
+    }
 }
