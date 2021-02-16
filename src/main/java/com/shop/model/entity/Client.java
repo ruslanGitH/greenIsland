@@ -1,7 +1,5 @@
 package com.shop.model.entity;
 
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
-import com.shop.model.enums.PaymentType;
 import com.shop.model.enums.Role;
 import com.sun.istack.NotNull;
 import lombok.Data;
@@ -9,7 +7,6 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @Entity

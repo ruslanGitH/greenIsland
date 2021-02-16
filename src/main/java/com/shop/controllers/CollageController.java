@@ -1,14 +1,10 @@
 package com.shop.controllers;
 
-import com.shop.model.entity.Client;
 import com.shop.model.entity.Collage;
 import com.shop.service.AdminPageService;
 import com.shop.service.MainPageService;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.security.core.context.SecurityContextHolder;
-//import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

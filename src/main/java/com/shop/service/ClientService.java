@@ -12,7 +12,7 @@ public class ClientService {
     @Autowired
     private IClientRepo clientRepo;
 
-    public ResponseEntity<?> addClient(Client client){
+    public ResponseEntity<?> addClient(Client client) {
         clientRepo.save(client);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
