@@ -29,4 +29,8 @@ public class MailService {
         String bossMassage = String.format("Новый заказ. Номер телефон  клиента %s. \n Заказ: \n %s \n", orders.getClient().getPhoneNumber(), builder.toString());
         mailSender.send(clientRepo.findByRole(Role.ADMIN).getEmail(), "Новый заказ", bossMassage);
     }
+
+    public void connectWithAdmin(String mail, String name, String text) {
+        mailSender.send(mail, name, text);
+    }
 }

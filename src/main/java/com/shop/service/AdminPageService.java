@@ -69,8 +69,6 @@ public class AdminPageService {
     }
 
     public ResponseEntity<?> updateProduct(Product product) {
-        familyRepo.save(product.getFamily());
-        categoryRepo.save(product.getCategory());
         productRepo.save(product);
         return ResponseEntity.status(HttpStatus.OK).body(null);
 

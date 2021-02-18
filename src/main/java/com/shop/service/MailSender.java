@@ -18,6 +18,7 @@ public class MailSender {
         mailMessage.setFrom(username);
         mailMessage.setTo(emailTo);
         mailMessage.setSubject(subject);
+        String.format("Сообщение от %s. \n%s", subject, message);
         mailMessage.setText(message);
 
         javaMailSender.send(mailMessage);
