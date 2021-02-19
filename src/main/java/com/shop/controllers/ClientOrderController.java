@@ -1,5 +1,6 @@
 package com.shop.controllers;
 
+import com.shop.model.dto.ClientConnectInfo;
 import com.shop.model.entity.ClientOrder;
 import com.shop.model.repository.IClientOrderRepo;
 import com.shop.model.repository.IClientRepo;
@@ -32,8 +33,8 @@ public class ClientOrderController {
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
     @RequestMapping(value = "connectWithAdmin", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    public ResponseEntity<?> addOrder(@PathVariable String mail, @PathVariable String name,  @PathVariable String text) {
-        mailService.connectWithAdmin(mail, name, text);
+    public ResponseEntity<?> connectWithAdmin(@RequestBody ClientConnectInfo clientConnectInfo) {
+        mailService.connectWithAdmin(clientConnectInfo.getMail(), clientConnectInfo.getClientName(), clientConnectInfo.getMessageText());
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 }
