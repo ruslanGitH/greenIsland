@@ -120,7 +120,7 @@
       <workItem from="1612109283626" duration="11169000" />
       <workItem from="1612378943883" duration="65687000" />
       <workItem from="1613315171663" duration="1465000" />
-      <workItem from="1613403422575" duration="36781000" />
+      <workItem from="1613403422575" duration="38129000" />
     </task>
     <task id="LOCAL-00001" summary="controllers created for the main page">
       <created>1612105907538</created>
@@ -298,15 +298,6 @@
     <state x="682" y="431" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1613164467219" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/shop/service/MailSender.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="order.getProduct()" />
