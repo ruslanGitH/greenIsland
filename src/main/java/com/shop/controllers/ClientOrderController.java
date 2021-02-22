@@ -9,10 +9,7 @@ import com.shop.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
@@ -39,6 +36,12 @@ public class ClientOrderController {
 //        mailService.send(orders);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
+
+   @GetMapping("/admin/clientOrders")
+   public ResponseEntity<?> getClientOrders(){
+        return ResponseEntity.ok().body(clientOrderRepo.findAll());
+   }
+
     @RequestMapping(value = "connectWithAdmin", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity<?> connectWithAdmin(@RequestBody ClientConnectInfo clientConnectInfo) {
         mailService.connectWithAdmin(clientConnectInfo.getMail(), clientConnectInfo.getClientName(), clientConnectInfo.getMessageText());
