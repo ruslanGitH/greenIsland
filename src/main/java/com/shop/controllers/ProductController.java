@@ -30,6 +30,11 @@ public class ProductController {
     }
 
     @GetMapping("/products")
+    public ResponseEntity<?> getActiveProducts() {
+        return mainPageService.getActiveProducts();
+    }
+
+    @GetMapping("/admin/products")
     public ResponseEntity<?> getAllProducts() {
         return mainPageService.getAllProductsList();
     }

@@ -27,9 +27,10 @@ public class ClientOrderController {
     public ResponseEntity<?> addOrder(@RequestBody ClientOrder orders) {
         orders.getOrders().stream().forEach(x->x.setClientOrder(orders));
         clientRepo.save(orders.getClient());
+        orders.setPrice(orders.getOrders().stream().mapToDouble(x -> x.getProduct().getPrice()).sum());
         clientOrderRepo.save(orders);
         orderRepo.saveAll(orders.getOrders());
-        mailService.send(orders);
+//        mailService.send(orders);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
     @RequestMapping(value = "connectWithAdmin", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")

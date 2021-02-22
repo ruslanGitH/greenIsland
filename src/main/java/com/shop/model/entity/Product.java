@@ -21,6 +21,7 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "family")
     private Family family;
+    private boolean active;
 
 
 }
