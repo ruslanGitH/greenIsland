@@ -9,7 +9,12 @@ import com.shop.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDateTime;
 
 @RestController
 public class ClientOrderController {
@@ -26,6 +31,7 @@ public class ClientOrderController {
     @RequestMapping(value = "clientOrder", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity<?> addOrder(@RequestBody ClientOrder orders) {
         orders.getOrders().stream().forEach(x->x.setClientOrder(orders));
+        orders.setDate(LocalDateTime.now());
         clientRepo.save(orders.getClient());
         orders.setPrice(orders.getOrders().stream().mapToDouble(x -> x.getProduct().getPrice()).sum());
         clientOrderRepo.save(orders);
