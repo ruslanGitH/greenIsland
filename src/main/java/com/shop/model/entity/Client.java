@@ -20,8 +20,8 @@ public class Client {
     private String phoneNumber;
     private String email;
 
-    @OneToMany(mappedBy = "client")
-    private List<ClientOrder> clientOrder = new ArrayList<>();
+//    @OneToMany(mappedBy = "client")
+//    private List<ClientOrder> clientOrder = new ArrayList<>();
 
     private String username;
     private String password;

@@ -1,5 +1,6 @@
 package com.shop.model.entity;
 
+import com.shop.model.enums.ClientOrderStatus;
 import com.shop.model.enums.PaymentType;
 import lombok.Data;
 
@@ -28,6 +29,10 @@ public class ClientOrder {
 
     @Enumerated(EnumType.STRING)
     private PaymentType paymentType;
+
+    @Enumerated(EnumType.STRING)
+    private ClientOrderStatus status;
+
 
 //    @ManyToMany(cascade = {
 //            CascadeType.PERSIST,

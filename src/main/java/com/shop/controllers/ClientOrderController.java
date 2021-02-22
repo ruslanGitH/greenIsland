@@ -1,6 +1,9 @@
 package com.shop.controllers;
 
 import com.shop.model.dto.ClientConnectInfo;
+import com.shop.model.dto.ClientOrderBoard;
+import com.shop.model.dto.OrdersDto;
+import com.shop.model.dto.ProductDto;
 import com.shop.model.entity.ClientOrder;
 import com.shop.model.repository.IClientOrderRepo;
 import com.shop.model.repository.IClientRepo;
@@ -12,6 +15,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class ClientOrderController {
@@ -27,7 +32,7 @@ public class ClientOrderController {
 
     @RequestMapping(value = "clientOrder", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity<?> addOrder(@RequestBody ClientOrder orders) {
-        orders.getOrders().stream().forEach(x->x.setClientOrder(orders));
+//        orders.getOrders().stream().forEach(x->x.setClientOrder(orders));
         orders.setDate(LocalDateTime.now());
         clientRepo.save(orders.getClient());
         orders.setPrice(orders.getOrders().stream().mapToDouble(x -> x.getProduct().getPrice()).sum());
@@ -37,10 +42,34 @@ public class ClientOrderController {
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
-   @GetMapping("/admin/clientOrders")
-   public ResponseEntity<?> getClientOrders(){
-        return ResponseEntity.ok().body(clientOrderRepo.findAll());
-   }
+    @GetMapping("/admin/clientOrders")
+    public ResponseEntity<?> getClientOrders() {
+        List<ClientOrder> clientOrders = new ArrayList<>();
+        clientOrderRepo.findAll().forEach(clientOrders::add);
+
+        List<ClientOrderBoard> clientOrderBoards = new ArrayList<>();
+        for (ClientOrder order : clientOrders) {
+            ClientOrderBoard clientOrderBoard = new ClientOrderBoard();
+            clientOrderBoard.setClientMail(order.getClient().getEmail());
+            clientOrderBoard.setClientPhoneNumber(order.getClient().getPhoneNumber());
+            clientOrderBoard.setStatus(order.getStatus());
+
+            List<OrdersDto> ordersDto = new ArrayList<>();
+
+            order.getOrders().forEach(o -> ordersDto.add(new OrdersDto(o.getCount(),
+                    new ProductDto(o.getProduct().getName(), o.getProduct().getPrice(), o.getProduct().getDescription(),
+                            o.getProduct().getFamily().getName(), o.getProduct().getCategory().getName()))));
+
+
+            clientOrderBoard.setProductList(ordersDto);
+
+            clientOrderBoards.add(clientOrderBoard);
+        }
+
+
+//        clientOrders.stream().map(ClientOrder::getOrders).forEach(x -> x.stream().iterator().next().setClientOrder(null));
+        return ResponseEntity.ok().body(clientOrderBoards);
+    }
 
     @RequestMapping(value = "connectWithAdmin", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity<?> connectWithAdmin(@RequestBody ClientConnectInfo clientConnectInfo) {
