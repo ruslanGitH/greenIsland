@@ -1,7 +1,6 @@
 package com.shop.model.entity;
 
 import com.shop.model.enums.ClientOrderStatus;
-import com.shop.model.enums.PaymentType;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -28,19 +27,7 @@ public class ClientOrder {
     private Client client;
 
     @Enumerated(EnumType.STRING)
-    private PaymentType paymentType;
-
-    @Enumerated(EnumType.STRING)
     private ClientOrderStatus status;
-
-
-//    @ManyToMany(cascade = {
-//            CascadeType.PERSIST,
-//            CascadeType.MERGE
-//    })
-//    @JoinTable(name = "current_order", joinColumns = @JoinColumn(name = "client_order_id"),
-//                        inverseJoinColumns = @JoinColumn(name = "product_id"))
-//    private List<Product> products = new ArrayList<>();
 
     @OneToMany(mappedBy = "clientOrder")
     private List<Orders> orders = new ArrayList<>();

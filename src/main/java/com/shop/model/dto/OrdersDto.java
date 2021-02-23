@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 public class OrdersDto {
     private int count;
-    private ProductDto product;
+    private ProductDtoForSend product;
 
-    public OrdersDto(int count, ProductDto product) {
+    public OrdersDto(int count, ProductDtoForSend product) {
         this.count = count;
         this.product = product;
     }

@@ -1,11 +1,14 @@
 package com.shop.controllers;
 
-import com.shop.model.entity.Product;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.shop.model.dto.ProductDto;
 import com.shop.service.AdminPageService;
 import com.shop.service.MainPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 @RestController
 public class ProductController {
@@ -14,8 +17,8 @@ public class ProductController {
     @Autowired
     private MainPageService mainPageService;
 
-    @RequestMapping(value = "admin/product", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    public ResponseEntity<?> saveProduct(@RequestBody Product product) {
+    @RequestMapping(value = "admin/product", method = RequestMethod.POST, produces = "multipart/form-data", consumes = "multipart/form-data")
+    public ResponseEntity<?> saveProduct(@ModelAttribute ProductDto product) throws IOException {
         return adminPageService.saveProduct(product);
     }
 
@@ -25,8 +28,9 @@ public class ProductController {
     }
 
     @RequestMapping(value = "admin/product", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
-    public ResponseEntity<?> updateProduct(@RequestBody Product product) {
-        return adminPageService.updateProduct(product);
+    public ResponseEntity<?> updateProduct(@RequestBody ProductDto product) {
+        return ResponseEntity.ok().body(null);
+//        return adminPageService.updateProduct(product);
     }
 
     @GetMapping("/products")

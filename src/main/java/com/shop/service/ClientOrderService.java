@@ -1,8 +1,9 @@
 package com.shop.service;
 
+import com.shop.model.dto.ChangeStatus;
 import com.shop.model.dto.ClientOrderBoard;
 import com.shop.model.dto.OrdersDto;
-import com.shop.model.dto.ProductDto;
+import com.shop.model.dto.ProductDtoForSend;
 import com.shop.model.entity.ClientOrder;
 import com.shop.model.enums.ClientOrderStatus;
 import com.shop.model.repository.IClientOrderRepo;
@@ -45,7 +46,7 @@ public class ClientOrderService {
             List<OrdersDto> ordersDto = new ArrayList<>();
 
             order.getOrders().forEach(o -> ordersDto.add(new OrdersDto(o.getCount(),
-                    new ProductDto(o.getProduct().getName(), o.getProduct().getPrice(), o.getProduct().getDescription(),
+                    new ProductDtoForSend(o.getProduct().getName(), o.getProduct().getPrice(), o.getProduct().getDescription(),
                             o.getProduct().getFamily().getName(), o.getProduct().getCategory().getName()))));
 
 
@@ -86,6 +87,7 @@ public class ClientOrderService {
         List<ClientOrderBoard> clientOrderBoards = new ArrayList<>();
         for (ClientOrder order : clientOrders.stream().filter(x -> x.getStatus() == status).collect(Collectors.toList())) {
             ClientOrderBoard clientOrderBoard = new ClientOrderBoard();
+            clientOrderBoard.setId(order.getId());
             clientOrderBoard.setClientMail(order.getClient().getEmail());
             clientOrderBoard.setClientPhoneNumber(order.getClient().getPhoneNumber());
             clientOrderBoard.setStatus(order.getStatus());
@@ -95,7 +97,7 @@ public class ClientOrderService {
             List<OrdersDto> ordersDto = new ArrayList<>();
 
             order.getOrders().forEach(o -> ordersDto.add(new OrdersDto(o.getCount(),
-                    new ProductDto(o.getProduct().getName(), o.getProduct().getPrice(), o.getProduct().getDescription(),
+                    new ProductDtoForSend(o.getProduct().getName(), o.getProduct().getPrice(), o.getProduct().getDescription(),
                             o.getProduct().getFamily().getName(), o.getProduct().getCategory().getName()))));
 
 
@@ -103,5 +105,13 @@ public class ClientOrderService {
             clientOrderBoards.add(clientOrderBoard);
         }
         return clientOrderBoards;
+    }
+
+    public ResponseEntity<?> changeStatus(ChangeStatus changeStatus) {
+            ClientOrder clientOrder = clientOrderRepo.findById(changeStatus.getId()).get();
+            clientOrder.setStatus(changeStatus.getStatus());
+            clientOrderRepo.save(clientOrder);
+            return ResponseEntity.ok().body(null);
+
     }
 }

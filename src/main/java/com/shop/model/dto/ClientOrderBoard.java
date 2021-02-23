@@ -8,6 +8,7 @@ import java.util.List;
 
 @Data
 public class ClientOrderBoard {
+    private Long id;
     private String clientPhoneNumber;
     private String clientMail;
     private List<OrdersDto> productList;

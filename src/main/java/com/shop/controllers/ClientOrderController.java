@@ -1,5 +1,6 @@
 package com.shop.controllers;
 
+import com.shop.model.dto.ChangeStatus;
 import com.shop.model.dto.ClientConnectInfo;
 import com.shop.model.entity.ClientOrder;
 import com.shop.service.ClientOrderService;
@@ -46,5 +47,9 @@ public class ClientOrderController {
     public ResponseEntity<?> connectWithAdmin(@RequestBody ClientConnectInfo clientConnectInfo) {
         mailService.connectWithAdmin(clientConnectInfo.getMail(), clientConnectInfo.getClientName(), clientConnectInfo.getMessageText());
         return ResponseEntity.status(HttpStatus.OK).body(null);
+    }
+    @RequestMapping(value = "/admin/changeStatus/", method = RequestMethod.POST)
+    public ResponseEntity<?> changeStatus(@RequestBody ChangeStatus changeStatus) {
+        return orderService.changeStatus(changeStatus);
     }
 }
