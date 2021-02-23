@@ -1,6 +1,5 @@
 package com.shop.model.dto;
 
-import com.shop.model.entity.Product;
 import lombok.Data;
 
 @Data

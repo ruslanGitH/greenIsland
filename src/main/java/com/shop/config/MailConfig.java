@@ -27,7 +27,6 @@ public class MailConfig {
     private String protocol;
 
 
-
     @Bean
     public JavaMailSender getMailSender() {
         JavaMailSenderImpl sender = new JavaMailSenderImpl();

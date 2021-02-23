@@ -23,12 +23,13 @@ public class MailSender {
 
         javaMailSender.send(mailMessage);
     }
+
     public void sendForConnect(String adminMail, String clientMail, String clientName, String messageText) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setFrom(username);
         mailMessage.setTo(adminMail);
         mailMessage.setSubject("Сообщение с формы связи");
-        mailMessage.setText(String.format("Сообщение от %s (email - %s). \n%s", clientName,clientMail, messageText));
+        mailMessage.setText(String.format("Сообщение от %s (email - %s). \n%s", clientName, clientMail, messageText));
         javaMailSender.send(mailMessage);
     }
 }

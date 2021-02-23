@@ -31,6 +31,6 @@ public class MailService {
     }
 
     public void connectWithAdmin(String mail, String name, String text) {
-        mailSender.sendForConnect(clientRepo.findByRole(Role.ADMIN).getEmail(),mail, name, text);
+        mailSender.sendForConnect(clientRepo.findByRole(Role.ADMIN).getEmail(), mail, name, text);
     }
 }

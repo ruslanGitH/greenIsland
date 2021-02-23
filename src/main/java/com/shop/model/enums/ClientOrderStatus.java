@@ -1,5 +1,5 @@
 package com.shop.model.enums;
 
-public enum  ClientOrderStatus {
+public enum ClientOrderStatus {
     NEW, PROCESSING, EXECUTED
 }

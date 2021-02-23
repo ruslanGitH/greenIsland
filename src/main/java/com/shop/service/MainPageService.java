@@ -20,7 +20,8 @@ public class MainPageService {
     public ResponseEntity<?> getAllProductsList() {
         return ResponseEntity.status(HttpStatus.OK).body(productRepo.findAll());
     }
-    public ResponseEntity<?> getActiveProducts(){
+
+    public ResponseEntity<?> getActiveProducts() {
         return ResponseEntity.status(HttpStatus.OK).body(productRepo.findByActiveIsTrue());
     }
 
