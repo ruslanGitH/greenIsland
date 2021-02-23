@@ -7,6 +7,7 @@ import com.shop.service.MainPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
@@ -18,8 +19,8 @@ public class ProductController {
     private MainPageService mainPageService;
 
     @RequestMapping(value = "admin/product", method = RequestMethod.POST, produces = "multipart/form-data", consumes = "multipart/form-data")
-    public ResponseEntity<?> saveProduct(@ModelAttribute ProductDto product) throws IOException {
-        return adminPageService.saveProduct(product);
+    public ResponseEntity<?> saveProduct(@ModelAttribute("image") MultipartFile file, @ModelAttribute ProductDto product) throws IOException {
+        return adminPageService.saveProduct(product, file);
     }
 
     @RequestMapping(value = "admin/product/{productId}", method = RequestMethod.DELETE)

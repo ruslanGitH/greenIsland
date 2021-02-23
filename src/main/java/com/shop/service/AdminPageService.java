@@ -1,24 +1,20 @@
 package com.shop.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.shop.model.dto.ProductDto;
 import com.shop.model.entity.*;
 import com.shop.model.repository.*;
-import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageInputStream;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.time.LocalDateTime;
 
 @Service
@@ -42,7 +38,7 @@ public class AdminPageService {
         return ResponseEntity.status(HttpStatus.OK).body(familyRepo.findAll());
     }
 
-    public ResponseEntity<?> saveProduct(ProductDto product) throws IOException {
+    public ResponseEntity<?> saveProduct(ProductDto product, MultipartFile file) throws IOException {
         File dir = new File("/imgDB");
         dir.mkdir();
         ObjectMapper mapper = new ObjectMapper();
@@ -54,21 +50,18 @@ public class AdminPageService {
         product1.setCategory(category);
         product1.setPrice(product.getPrice());
         product1.setName(product.getName());
+        file.transferTo(dir);
+//        String imgName = LocalDateTime.now().toString();
+//        byte[] imgByte = product.getImage();
+//        FileOutputStream fileOutputStream = new FileOutputStream(new File(dir.getAbsolutePath() + "/" + 1));
+//        fileOutputStream.write(imgByte);
+//        fileOutputStream.flush();
+//        fileOutputStream.close();
+//
+//        ByteArrayResource arrayResource = new ByteArrayResource(product.getImage());
+//        arrayResource.getFile();
 
-//        URL url = new URL(product.getImage().toString());
-//        URLConnection urlConnection = url.openConnection();
-//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-        String imgName = dir+LocalDateTime.now().toString();
-        byte[] imgByte =null;// product.getImage();
-        FileOutputStream fileOutputStream = new FileOutputStream(dir);
-        fileOutputStream.write(imgByte);
-        fileOutputStream.flush();
-        fileOutputStream.close();
-//        FileWriter fileWriter = new FileWriter(imgName);
-//        bufferedReader.close();
-//        fileWriter.flush();
-//        fileWriter.close();
-        product1.setImage(imgName);
+        product1.setImage(dir.getAbsolutePath() + "/" + file.getName());
 
         productRepo.save(product1);
         return ResponseEntity.status(HttpStatus.OK).body(null);

@@ -11,6 +11,7 @@ import com.shop.model.repository.IClientRepo;
 import com.shop.model.repository.IOrderRepo;
 import com.shop.model.repository.IProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -111,7 +112,7 @@ public class ClientOrderService {
             ClientOrder clientOrder = clientOrderRepo.findById(changeStatus.getId()).get();
             clientOrder.setStatus(changeStatus.getStatus());
             clientOrderRepo.save(clientOrder);
-            return ResponseEntity.ok().body(null);
+            return ResponseEntity.status(HttpStatus.OK).body(null);
 
     }
 }
