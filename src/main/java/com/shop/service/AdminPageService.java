@@ -15,6 +15,7 @@ import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageInputStream;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 
 @Service
@@ -38,8 +39,8 @@ public class AdminPageService {
         return ResponseEntity.status(HttpStatus.OK).body(familyRepo.findAll());
     }
 
-    public ResponseEntity<?> saveProduct(ProductDto product, MultipartFile file) throws IOException {
-        File dir = new File("/imgDB");
+    public ResponseEntity<?> saveProduct(ProductDto product) throws IOException {
+        File dir = new File("/upload");
         dir.mkdir();
         ObjectMapper mapper = new ObjectMapper();
         Category category = mapper.readValue(product.getCategory().toString(), Category.class);
@@ -50,18 +51,9 @@ public class AdminPageService {
         product1.setCategory(category);
         product1.setPrice(product.getPrice());
         product1.setName(product.getName());
-        file.transferTo(dir);
-//        String imgName = LocalDateTime.now().toString();
-//        byte[] imgByte = product.getImage();
-//        FileOutputStream fileOutputStream = new FileOutputStream(new File(dir.getAbsolutePath() + "/" + 1));
-//        fileOutputStream.write(imgByte);
-//        fileOutputStream.flush();
-//        fileOutputStream.close();
-//
-//        ByteArrayResource arrayResource = new ByteArrayResource(product.getImage());
-//        arrayResource.getFile();
+        product.getImage().transferTo(Paths.get(dir.getAbsolutePath() +"\\"+product.getImage().getOriginalFilename()));
 
-        product1.setImage(dir.getAbsolutePath() + "/" + file.getName());
+        product1.setImage(dir.getAbsolutePath() +"\\"+product.getImage().getOriginalFilename());
 
         productRepo.save(product1);
         return ResponseEntity.status(HttpStatus.OK).body(null);
@@ -110,6 +102,13 @@ public class AdminPageService {
         Product product1 = productRepo.findById(product.getId()).get();
         product1.setImage(folder.getAbsolutePath() + "/" + file.getName());
         productRepo.save(product1);
+        return ResponseEntity.status(HttpStatus.OK).body(null);
+    }
+
+    public ResponseEntity<?> changeProductStatus(Long id, boolean active) {
+        Product product = productRepo.findById(id).get();
+        product.setActive(active);
+        productRepo.save(product);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 }

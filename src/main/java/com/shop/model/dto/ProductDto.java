@@ -12,7 +12,7 @@ public class ProductDto {
     private Long id;
     private String name;
     private double price;
-//    private MultipartFile image;
+    private MultipartFile image;
     private String description;
     private Object category;
     private Object family;
