@@ -35,9 +35,9 @@ public class ProductController {
 
 
     @RequestMapping(value = "admin/product", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
-    public ResponseEntity<?> updateProduct(@RequestBody ProductDto product) {
-        return ResponseEntity.ok().body(null);
-//        return adminPageService.updateProduct(product);
+    public ResponseEntity<?> updateProduct(@RequestBody ProductDto product) throws IOException {
+//        return ResponseEntity.ok().body(null);
+        return adminPageService.updateProduct(product);
     }
 
     @GetMapping("/products")

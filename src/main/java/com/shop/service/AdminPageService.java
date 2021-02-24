@@ -85,6 +85,11 @@ public class AdminPageService {
     }
 
     public ResponseEntity<?> deleteCategory(Long id) {
+        Product productDB = productRepo.findById(id).get();
+        if (productDB.getImage()!=null) {
+            File fileImg = new File(productDB.getImage());
+            fileImg.delete();
+        }
         categoryRepo.deleteById(id);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
@@ -94,14 +99,26 @@ public class AdminPageService {
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
-    public ResponseEntity<?> updateProduct(ProductDto product, MultipartFile file) throws IOException {
-        File folder = new File("db/productPhotos");
-        folder.mkdir();
-        file.transferTo(folder);
+    public ResponseEntity<?> updateProduct(ProductDto product) throws IOException {
+        File dir = new File("/upload");
+        dir.mkdir();
+        ObjectMapper mapper = new ObjectMapper();
+        Category category = mapper.readValue(product.getCategory().toString(), Category.class);
+        Family family = mapper.readValue(product.getFamily().toString(), Family.class);
+        Product productDB = productRepo.findById(product.getId()).get();
+        productDB.setDescription(product.getDescription());
+        productDB.setFamily(family);
+        productDB.setCategory(category);
+        productDB.setPrice(product.getPrice());
+        productDB.setName(product.getName());
+        if (productDB.getImage()!=null) {
+            File fileImg = new File(productDB.getImage());
+            fileImg.delete();
+        }
 
-        Product product1 = productRepo.findById(product.getId()).get();
-        product1.setImage(folder.getAbsolutePath() + "/" + file.getName());
-        productRepo.save(product1);
+        product.getImage().transferTo(Paths.get(dir.getAbsolutePath() +"\\"+product.getImage().getOriginalFilename()));
+        productDB.setImage(dir.getAbsolutePath() +"\\"+product.getImage().getOriginalFilename());
+        productRepo.save(productDB);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
