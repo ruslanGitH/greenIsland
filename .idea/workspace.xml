@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0676e0a1-37dd-4777-8776-9e757cee14bd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/model/repository/IProductRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/model/repository/IProductRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/service/AdminPageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/service/AdminPageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +130,7 @@
       <workItem from="1614019047295" duration="5481000" />
       <workItem from="1614065918951" duration="106000" />
       <workItem from="1614066041740" duration="21781000" />
-      <workItem from="1614105721065" duration="20860000" />
+      <workItem from="1614105721065" duration="22155000" />
     </task>
     <task id="LOCAL-00001" summary="controllers created for the main page">
       <created>1612105907538</created>
