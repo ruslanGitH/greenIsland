@@ -46,7 +46,7 @@ public class ProductController {
     }
 
     @GetMapping("/admin/products")
-    public ResponseEntity<?> getAllProducts() {
+    public ResponseEntity<?> getAllProducts() throws IOException {
         return mainPageService.getAllProductsList();
     }
 
