@@ -80,16 +80,16 @@ public class AdminPageService {
     }
 
     public ResponseEntity<?> deleteProduct(Long productId) {
+        Product productDB = productRepo.findById(productId).get();
+        if (productDB.getImage()!=null) {
+            File fileImg = new File(productDB.getImage());
+            fileImg.delete();
+        }
         productRepo.deleteById(productId);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
     public ResponseEntity<?> deleteCategory(Long id) {
-        Product productDB = productRepo.findById(id).get();
-        if (productDB.getImage()!=null) {
-            File fileImg = new File(productDB.getImage());
-            fileImg.delete();
-        }
         categoryRepo.deleteById(id);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
