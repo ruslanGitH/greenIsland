@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0676e0a1-37dd-4777-8776-9e757cee14bd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/controllers/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/service/AdminPageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/service/AdminPageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/controllers/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/controllers/ProductController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/service/AdminPageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/service/AdminPageService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +51,7 @@
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/front/garden" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.4862069" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
@@ -134,7 +130,7 @@
       <workItem from="1614019047295" duration="5481000" />
       <workItem from="1614065918951" duration="106000" />
       <workItem from="1614066041740" duration="21781000" />
-      <workItem from="1614105721065" duration="14396000" />
+      <workItem from="1614105721065" duration="18162000" />
     </task>
     <task id="LOCAL-00001" summary="controllers created for the main page">
       <created>1612105907538</created>
@@ -274,11 +270,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="490" y="174" key="Maven.ArtifactSearchDialog/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1613495085213" />
-    <state x="461" y="164" key="SettingsEditor" timestamp="1614018907867">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2032" y="58" key="SettingsEditor" timestamp="1614195389080">
+      <screen x="1920" y="0" width="1280" height="984" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1614018907867" />
-    <state x="2032" y="58" key="SettingsEditor/0.0.1920.1040/1920.0.1280.984@1920.0.1280.984" timestamp="1612116305641" />
+    <state x="2032" y="58" key="SettingsEditor/0.0.1920.1040/1920.0.1280.984@1920.0.1280.984" timestamp="1614195389080" />
     <state x="681" y="261" width="570" height="524" key="StructurePopup" timestamp="1614106286497">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
