@@ -95,8 +95,12 @@ public class AdminPageService {
     }
 
     public ResponseEntity<?> deleteFamily(Long id) {
-        familyRepo.deleteById(id);
-        return ResponseEntity.status(HttpStatus.OK).body(null);
+        List<Product> byFamilyIs = productRepo.findByFamilyIs(familyRepo.findById(id).get());
+        if (byFamilyIs.size() == 0) {
+            familyRepo.deleteById(id);
+            return ResponseEntity.status(HttpStatus.OK).body(null);
+        }
+        else return ResponseEntity.status(HttpStatus.OK).body(byFamilyIs);
     }
 
     public ResponseEntity<?> updateProduct(ProductDto product) throws IOException {
