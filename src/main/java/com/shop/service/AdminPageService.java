@@ -5,18 +5,14 @@ import com.shop.model.dto.ProductDto;
 import com.shop.model.entity.*;
 import com.shop.model.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageInputStream;
-import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Paths;
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class AdminPageService {
@@ -51,9 +47,9 @@ public class AdminPageService {
         product1.setCategory(category);
         product1.setPrice(product.getPrice());
         product1.setName(product.getName());
-        product.getImage().transferTo(Paths.get(dir.getAbsolutePath() +"\\"+product.getImage().getOriginalFilename()));
+        product.getImage().transferTo(Paths.get(dir.getAbsolutePath() + "\\" + product.getImage().getOriginalFilename()));
 
-        product1.setImage(dir.getAbsolutePath() +"\\"+product.getImage().getOriginalFilename());
+        product1.setImage(dir.getAbsolutePath() + "\\" + product.getImage().getOriginalFilename());
 
         productRepo.save(product1);
         return ResponseEntity.status(HttpStatus.OK).body(null);
@@ -81,7 +77,7 @@ public class AdminPageService {
 
     public ResponseEntity<?> deleteProduct(Long productId) {
         Product productDB = productRepo.findById(productId).get();
-        if (productDB.getImage()!=null) {
+        if (productDB.getImage() != null) {
             File fileImg = new File(productDB.getImage());
             fileImg.delete();
         }
@@ -90,8 +86,12 @@ public class AdminPageService {
     }
 
     public ResponseEntity<?> deleteCategory(Long id) {
-        categoryRepo.deleteById(id);
-        return ResponseEntity.status(HttpStatus.OK).body(null);
+        List<Product> byCategoryIs = productRepo.findByCategoryIs(categoryRepo.findById(id).get());
+        if (byCategoryIs.size() == 0) {
+            categoryRepo.deleteById(id);
+            return ResponseEntity.status(HttpStatus.OK).body(null);
+        }
+        else return ResponseEntity.status(HttpStatus.OK).body(byCategoryIs);
     }
 
     public ResponseEntity<?> deleteFamily(Long id) {
@@ -111,13 +111,13 @@ public class AdminPageService {
         productDB.setCategory(category);
         productDB.setPrice(product.getPrice());
         productDB.setName(product.getName());
-        if (productDB.getImage()!=null) {
+        if (productDB.getImage() != null) {
             File fileImg = new File(productDB.getImage());
             fileImg.delete();
         }
 
-        product.getImage().transferTo(Paths.get(dir.getAbsolutePath() +"\\"+product.getImage().getOriginalFilename()));
-        productDB.setImage(dir.getAbsolutePath() +"\\"+product.getImage().getOriginalFilename());
+        product.getImage().transferTo(Paths.get(dir.getAbsolutePath() + "\\" + product.getImage().getOriginalFilename()));
+        productDB.setImage(dir.getAbsolutePath() + "\\" + product.getImage().getOriginalFilename());
         productRepo.save(productDB);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
