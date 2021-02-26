@@ -135,7 +135,7 @@ public class AdminPageService {
         }
 
         product.getImage().transferTo(Paths.get(dir.getAbsolutePath() + "\\" + product.getImage().getOriginalFilename()));
-        productDB.setImage(dir.getAbsolutePath() + "\\" + product.getImage().getOriginalFilename());
+        productDB.setImage(product.getImage().getOriginalFilename());
         productRepo.save(productDB);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
