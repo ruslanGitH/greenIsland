@@ -2,19 +2,16 @@ package com.shop.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shop.model.dto.ProductDto;
-import com.shop.model.dto.ProductWithImage;
 import com.shop.model.entity.*;
 import com.shop.model.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import sun.misc.IOUtils;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferByte;
-import java.awt.image.WritableRaster;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
@@ -95,8 +92,7 @@ public class AdminPageService {
         if (byCategoryIs.size() == 0) {
             categoryRepo.deleteById(id);
             return ResponseEntity.status(HttpStatus.OK).body(null);
-        }
-        else return ResponseEntity.status(HttpStatus.OK).body(byCategoryIs);
+        } else return ResponseEntity.status(HttpStatus.OK).body(byCategoryIs);
     }
 
     public ResponseEntity<?> deleteFamily(Long id) {
@@ -104,20 +100,25 @@ public class AdminPageService {
         if (byFamilyIs.size() == 0) {
             familyRepo.deleteById(id);
             return ResponseEntity.status(HttpStatus.OK).body(null);
-        }
-        else return ResponseEntity.status(HttpStatus.OK).body(byFamilyIs);
-    }
-    public ResponseEntity<?> getPhotoByName(String photo) throws IOException {
-        File file = new File("/upload/"+photo);
-        BufferedImage bufferedImage = ImageIO.read(file);
-        WritableRaster writableRaster = bufferedImage.getRaster();
-        DataBufferByte dataBufferByte = (DataBufferByte) writableRaster.getDataBuffer();
-
-        return ResponseEntity.status(HttpStatus.OK).body(dataBufferByte.getData());
-
+        } else return ResponseEntity.status(HttpStatus.OK).body(byFamilyIs);
     }
 
-        public ResponseEntity<?> updateProduct(ProductDto product) throws IOException {
+    public ResponseEntity<byte[]> getPhotoByName(String photo, final HttpServletResponse response) throws IOException {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
+        File file = new File("/upload/" + photo);
+//        BufferedImage bufferedImage = ImageIO.read(file);
+//        WritableRaster writableRaster = bufferedImage.getRaster();
+//        DataBufferByte dataBufferByte = (DataBufferByte) writableRaster.getDataBuffer();
+        byte[] media = IOUtils.readAllBytes(new FileInputStream(file));
+        ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
+
+        return responseEntity;
+
+    }
+
+    public ResponseEntity<?> updateProduct(ProductDto product) throws IOException {
         File dir = new File("/upload");
         dir.mkdir();
         ObjectMapper mapper = new ObjectMapper();

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @RestController
@@ -55,7 +56,7 @@ public class ProductController {
     }
 
     @GetMapping("/product/img/{name}")
-    public ResponseEntity<?> getProductWithId(@PathVariable("name") String name) throws IOException {
-        return adminPageService.getPhotoByName(name);
+    public ResponseEntity<byte[]> getProductWithId(@PathVariable("name") String name, final HttpServletResponse response) throws IOException {
+        return adminPageService.getPhotoByName(name, response);
     }
 }
