@@ -2,6 +2,7 @@ package com.shop.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shop.model.dto.ProductDto;
+import com.shop.model.dto.ProductWithImage;
 import com.shop.model.entity.*;
 import com.shop.model.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -102,8 +107,17 @@ public class AdminPageService {
         }
         else return ResponseEntity.status(HttpStatus.OK).body(byFamilyIs);
     }
+    public ResponseEntity<?> getPhotoByName(String photo) throws IOException {
+        File file = new File("/upload/"+photo);
+        BufferedImage bufferedImage = ImageIO.read(file);
+        WritableRaster writableRaster = bufferedImage.getRaster();
+        DataBufferByte dataBufferByte = (DataBufferByte) writableRaster.getDataBuffer();
 
-    public ResponseEntity<?> updateProduct(ProductDto product) throws IOException {
+        return ResponseEntity.status(HttpStatus.OK).body(dataBufferByte.getData());
+
+    }
+
+        public ResponseEntity<?> updateProduct(ProductDto product) throws IOException {
         File dir = new File("/upload");
         dir.mkdir();
         ObjectMapper mapper = new ObjectMapper();

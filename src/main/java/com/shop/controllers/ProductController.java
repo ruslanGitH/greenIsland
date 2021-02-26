@@ -27,11 +27,10 @@ public class ProductController {
         return adminPageService.deleteProduct(productId);
     }
 
-    @RequestMapping(value = "admin/product", method = RequestMethod.POST,produces = "application/json", consumes = "application/json")
-     public ResponseEntity<?> changeProductStatus(@RequestBody ProductChangeStatus changeStatus) {
+    @RequestMapping(value = "admin/product", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<?> changeProductStatus(@RequestBody ProductChangeStatus changeStatus) {
         return adminPageService.changeProductStatus(changeStatus.getId(), changeStatus.isActive());
     }
-
 
 
     @RequestMapping(value = "admin/product", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
@@ -53,5 +52,10 @@ public class ProductController {
     @GetMapping("/product/{productId}")
     public ResponseEntity<?> getProductWithId(@PathVariable("productId") Long productId) {
         return mainPageService.getProduct(productId);
+    }
+
+    @GetMapping("/product/img/{name}")
+    public ResponseEntity<?> getProductWithId(@PathVariable("name") String name) throws IOException {
+        return adminPageService.getPhotoByName(name);
     }
 }
