@@ -54,10 +54,14 @@ public class MainPageService {
         for (Product product : all) {
             if (product.getImage() != null) {
                 File file = new File(product.getImage());
-                BufferedImage bufferedImage = ImageIO.read(file);
-                WritableRaster writableRaster = bufferedImage.getRaster();
-                DataBufferByte dataBufferByte = (DataBufferByte) writableRaster.getDataBuffer();
-                productWithImages.add(new ProductWithImage(product, dataBufferByte.getData()));
+                try {
+                    BufferedImage bufferedImage = ImageIO.read(file);
+                    WritableRaster writableRaster = bufferedImage.getRaster();
+                    DataBufferByte dataBufferByte = (DataBufferByte) writableRaster.getDataBuffer();
+                    productWithImages.add(new ProductWithImage(product, dataBufferByte.getData()));
+                } catch (Exception e) {
+                    productWithImages.add(new ProductWithImage(product, null));
+                }
             } else
                 productWithImages.add(new ProductWithImage(product, null));
         }
