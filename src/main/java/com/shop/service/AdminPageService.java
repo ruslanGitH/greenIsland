@@ -49,7 +49,7 @@ public class AdminPageService {
         product1.setName(product.getName());
         product.getImage().transferTo(Paths.get(dir.getAbsolutePath() + "\\" + product.getImage().getOriginalFilename()));
 
-        product1.setImage(dir.getAbsolutePath() + "\\" + product.getImage().getOriginalFilename());
+        product1.setImage(product.getImage().getOriginalFilename());
 
         productRepo.save(product1);
         return ResponseEntity.status(HttpStatus.OK).body(null);

@@ -51,9 +51,10 @@ public class MainPageService {
     public ResponseEntity<?> getAllProductsList() throws IOException {
         List<Product> all = productRepo.findAll();
         List<ProductWithImage> productWithImages = new ArrayList<>();
+        File dir = new File("/upload");
         for (Product product : all) {
             if (product.getImage() != null) {
-                File file = new File(product.getImage());
+                File file = new File(dir.getAbsolutePath()+"\\"+product.getImage());
                 try {
                     BufferedImage bufferedImage = ImageIO.read(file);
                     WritableRaster writableRaster = bufferedImage.getRaster();

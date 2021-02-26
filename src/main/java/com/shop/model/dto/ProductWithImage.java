@@ -5,7 +5,6 @@ import com.shop.model.entity.Family;
 import com.shop.model.entity.Product;
 import lombok.Data;
 
-import javax.persistence.*;
 @Data
 public class ProductWithImage {
     private Long id;
