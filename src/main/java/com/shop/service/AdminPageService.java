@@ -49,6 +49,7 @@ public class AdminPageService {
         product1.setCategory(category);
         product1.setPrice(product.getPrice());
         product1.setName(product.getName());
+        product1.setActive(product.isActive());
         product.getImage().transferTo(Paths.get(dir.getAbsolutePath() + "\\" + product.getImage().getOriginalFilename()));
 
         product1.setImage(product.getImage().getOriginalFilename());
@@ -108,9 +109,6 @@ public class AdminPageService {
         headers.setCacheControl(CacheControl.noCache().getHeaderValue());
         response.setContentType(MediaType.IMAGE_JPEG_VALUE);
         File file = new File("/upload/" + photo);
-//        BufferedImage bufferedImage = ImageIO.read(file);
-//        WritableRaster writableRaster = bufferedImage.getRaster();
-//        DataBufferByte dataBufferByte = (DataBufferByte) writableRaster.getDataBuffer();
         byte[] media = IOUtils.readAllBytes(new FileInputStream(file));
         ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
 
@@ -128,15 +126,18 @@ public class AdminPageService {
         productDB.setDescription(product.getDescription());
         productDB.setFamily(family);
         productDB.setCategory(category);
+        productDB.setActive(product.isActive());
         productDB.setPrice(product.getPrice());
         productDB.setName(product.getName());
-        if (productDB.getImage() != null) {
-            File fileImg = new File(productDB.getImage());
-            fileImg.delete();
-        }
+        if (product.getImage() != null) {
+            if (productDB.getImage() != null) {
+                File fileImg = new File(productDB.getImage());
+                fileImg.delete();
+            }
 
-        product.getImage().transferTo(Paths.get(dir.getAbsolutePath() + "\\" + product.getImage().getOriginalFilename()));
-        productDB.setImage(product.getImage().getOriginalFilename());
+            product.getImage().transferTo(Paths.get(dir.getAbsolutePath() + "\\" + product.getImage().getOriginalFilename()));
+            productDB.setImage(product.getImage().getOriginalFilename());
+        }
         productRepo.save(productDB);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }

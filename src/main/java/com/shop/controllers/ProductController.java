@@ -5,6 +5,7 @@ import com.shop.model.dto.ProductDto;
 import com.shop.service.AdminPageService;
 import com.shop.service.MainPageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,8 +35,8 @@ public class ProductController {
     }
 
 
-    @RequestMapping(value = "admin/product", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
-    public ResponseEntity<?> updateProduct(@RequestBody ProductDto product) throws IOException {
+    @RequestMapping(value = "admin/product", method = RequestMethod.PUT, produces = "multipart/form-data", consumes = "multipart/form-data")
+    public ResponseEntity<?> updateProduct(@ModelAttribute ProductDto product) throws IOException {
 //        return ResponseEntity.ok().body(null);
         return adminPageService.updateProduct(product);
     }
@@ -57,6 +58,8 @@ public class ProductController {
 
     @GetMapping("/product/img/{name}")
     public ResponseEntity<byte[]> getProductWithId(@PathVariable("name") String name, final HttpServletResponse response) throws IOException {
-        return adminPageService.getPhotoByName(name, response);
+        if (!name.equals("null"))
+            return adminPageService.getPhotoByName(name, response);
+        else return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 }

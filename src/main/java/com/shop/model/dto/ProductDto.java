@@ -3,9 +3,6 @@ package com.shop.model.dto;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.sql.Blob;
-
 
 @Data
 public class ProductDto {
@@ -16,4 +13,5 @@ public class ProductDto {
     private String description;
     private Object category;
     private Object family;
+    private boolean active;
 }

@@ -16,6 +16,10 @@ public class CategoryController {
     public ResponseEntity<?> saveCategory(@RequestBody Category category) {
         return adminPageService.saveCategory(category);
     }
+    @RequestMapping(value = "admin/category", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<?> updateCategory(@RequestBody Category category) {
+        return adminPageService.saveCategory(category);
+    }
 
     @RequestMapping(value = "admin/category/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> removeCategory(@PathVariable("id") Long id) {
