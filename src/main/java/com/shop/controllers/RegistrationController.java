@@ -20,6 +20,8 @@ public class RegistrationController {
 //        user.setRole(Role.ADMIN);
         return clientService.addClient(user);
     }
+
+
 //    @GetMapping("/registration")
 //    public String registrationPage(){
 //        return "registration";
