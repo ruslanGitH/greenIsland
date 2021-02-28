@@ -43,6 +43,7 @@ public class ClientOrderService {
             clientOrderBoard.setDateTime(order.getDate());
             clientOrderBoard.setStatus(order.getStatus());
             clientOrderBoard.setPrice(order.getPrice());
+            clientOrderBoard.setName(order.getClient().getLastName());
 
             List<OrdersDto> ordersDto = new ArrayList<>();
 
@@ -94,6 +95,8 @@ public class ClientOrderService {
             clientOrderBoard.setStatus(order.getStatus());
             clientOrderBoard.setDateTime(order.getDate());
             clientOrderBoard.setPrice(order.getPrice());
+            String name = order.getClient().getLastName().equals(order.getClient().getFirstName()) ? order.getClient().getLastName() : order.getClient().getLastName()+ " " + (order.getClient().getFirstName());
+            clientOrderBoard.setName(name);
 
             List<OrdersDto> ordersDto = new ArrayList<>();
 

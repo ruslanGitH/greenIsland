@@ -15,4 +15,5 @@ public class ClientOrderBoard {
     private ClientOrderStatus status;
     private double price;
     private LocalDateTime dateTime;
+    private String name;
 }
