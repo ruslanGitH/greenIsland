@@ -17,7 +17,7 @@ public class ProductController {
     @Autowired
     private MainPageService mainPageService;
 
-    @RequestMapping(value = "admin/product", method = RequestMethod.POST, produces = "multipart/form-data", consumes = "multipart/form-data")
+    @RequestMapping(value = "admin/product", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 //    public ResponseEntity<?> saveProduct(@ModelAttribute ProductDto file) throws IOException {
     public ResponseEntity<?> saveProduct(@RequestBody Product product) throws IOException {
         return adminPageService.saveProduct(product);
