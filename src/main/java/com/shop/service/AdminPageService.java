@@ -37,24 +37,24 @@ public class AdminPageService {
         return ResponseEntity.status(HttpStatus.OK).body(familyRepo.findAll());
     }
 
-    public ResponseEntity<?> saveProduct(ProductDto product) throws IOException {
-        File dir = new File("/upload");
-        dir.mkdir();
-        ObjectMapper mapper = new ObjectMapper();
-        Category category = mapper.readValue(product.getCategory().toString(), Category.class);
-        Family family = mapper.readValue(product.getFamily().toString(), Family.class);
-        Product product1 = new Product();
-        product1.setDescription(product.getDescription());
-        product1.setFamily(family);
-        product1.setCategory(category);
-        product1.setPrice(product.getPrice());
-        product1.setName(product.getName());
-        product1.setActive(product.isActive());
-        product.getImage().transferTo(Paths.get(dir.getAbsolutePath() + "\\" + product.getImage().getOriginalFilename()));
+    public ResponseEntity<?> saveProduct(Product product) throws IOException {
+//        File dir = new File("/upload");
+//        dir.mkdir();
+//        ObjectMapper mapper = new ObjectMapper();
+//        Category category = mapper.readValue(product.getCategory().toString(), Category.class);
+//        Family family = mapper.readValue(product.getFamily().toString(), Family.class);
+//        Product product1 = new Product();
+//        product1.setDescription(product.getDescription());
+//        product1.setFamily(family);
+//        product1.setCategory(category);
+//        product1.setPrice(product.getPrice());
+//        product1.setName(product.getName());
+//        product1.setActive(product.isActive());
+//        product.getImage().transferTo(Paths.get(dir.getAbsolutePath() + "\\" + product.getImage().getOriginalFilename()));
+//
+//        product1.setImage(product.getImage().getOriginalFilename());
 
-        product1.setImage(product.getImage().getOriginalFilename());
-
-        productRepo.save(product1);
+        productRepo.save(product);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
@@ -80,10 +80,10 @@ public class AdminPageService {
 
     public ResponseEntity<?> deleteProduct(Long productId) {
         Product productDB = productRepo.findById(productId).get();
-        if (productDB.getImage() != null) {
-            File fileImg = new File(productDB.getImage());
-            fileImg.delete();
-        }
+//        if (productDB.getImage() != null) {
+//            File fileImg = new File(productDB.getImage());
+//            fileImg.delete();
+//        }
         productRepo.deleteById(productId);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
@@ -104,41 +104,39 @@ public class AdminPageService {
         } else return ResponseEntity.status(HttpStatus.OK).body(byFamilyIs);
     }
 
-    public ResponseEntity<byte[]> getPhotoByName(String photo, final HttpServletResponse response) throws IOException {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setCacheControl(CacheControl.noCache().getHeaderValue());
-        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
-        File file = new File("/upload/" + photo);
-        byte[] media = IOUtils.readAllBytes(new FileInputStream(file));
-        ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
+//    public ResponseEntity<byte[]> getPhotoByName(String photo, final HttpServletResponse response) throws IOException {
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+//        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
+//        File file = new File("/upload/" + photo);
+//        byte[] media = IOUtils.readAllBytes(new FileInputStream(file));
+//        ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
+//        return responseEntity;
+//    }
 
-        return responseEntity;
-
-    }
-
-    public ResponseEntity<?> updateProduct(ProductDto product) throws IOException {
-        File dir = new File("/upload");
-        dir.mkdir();
-        ObjectMapper mapper = new ObjectMapper();
-        Category category = mapper.readValue(product.getCategory().toString(), Category.class);
-        Family family = mapper.readValue(product.getFamily().toString(), Family.class);
-        Product productDB = productRepo.findById(product.getId()).get();
-        productDB.setDescription(product.getDescription());
-        productDB.setFamily(family);
-        productDB.setCategory(category);
-        productDB.setActive(product.isActive());
-        productDB.setPrice(product.getPrice());
-        productDB.setName(product.getName());
-        if (product.getImage() != null) {
-            if (productDB.getImage() != null) {
-                File fileImg = new File(productDB.getImage());
-                fileImg.delete();
-            }
-
-            product.getImage().transferTo(Paths.get(dir.getAbsolutePath() + "\\" + product.getImage().getOriginalFilename()));
-            productDB.setImage(product.getImage().getOriginalFilename());
-        }
-        productRepo.save(productDB);
+    public ResponseEntity<?> updateProduct(Product product) throws IOException {
+//        File dir = new File("/upload");
+//        dir.mkdir();
+//        ObjectMapper mapper = new ObjectMapper();
+//        Category category = mapper.readValue(product.getCategory().toString(), Category.class);
+//        Family family = mapper.readValue(product.getFamily().toString(), Family.class);
+//        Product productDB = productRepo.findById(product.getId()).get();
+//        productDB.setDescription(product.getDescription());
+//        productDB.setFamily(family);
+//        productDB.setCategory(category);
+//        productDB.setActive(product.isActive());
+//        productDB.setPrice(product.getPrice());
+//        productDB.setName(product.getName());
+//        if (product.getImage() != null) {
+//            if (productDB.getImage() != null) {
+//                File fileImg = new File(productDB.getImage());
+//                fileImg.delete();
+//            }
+//
+//            product.getImage().transferTo(Paths.get(dir.getAbsolutePath() + "\\" + product.getImage().getOriginalFilename()));
+//            productDB.setImage(product.getImage().getOriginalFilename());
+//        }
+        productRepo.save(product);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 

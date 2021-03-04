@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0676e0a1-37dd-4777-8776-9e757cee14bd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/controllers/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/service/AdminPageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/service/AdminPageService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +140,7 @@
       <workItem from="1614066041740" duration="21781000" />
       <workItem from="1614105721065" duration="28747000" />
       <workItem from="1614318526078" duration="28192000" />
-      <workItem from="1614517662417" duration="8719000" />
+      <workItem from="1614517662417" duration="13144000" />
     </task>
     <task id="LOCAL-00001" summary="controllers created for the main page">
       <created>1612105907538</created>
@@ -295,10 +299,10 @@
     </state>
     <state width="972" height="217" key="XDebugger.FullValuePopup/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1614105905753" />
     <state width="904" height="585" key="XDebugger.FullValuePopup/0.0.1920.1040/1920.0.1280.984@1920.0.1280.984" timestamp="1614077494537" />
-    <state x="1237" y="163" width="1736" height="822" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1614111213223">
+    <state x="1898" y="54" width="1187" height="822" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1614883933730">
       <screen x="1920" y="0" width="1280" height="984" />
     </state>
-    <state x="1237" y="163" width="1736" height="822" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1614111213223" />
+    <state x="1898" y="54" width="1187" height="822" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1614883933730" />
     <state x="561" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1612599071301">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -311,10 +315,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1227" y="256" key="extract.method.dialog/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1614065669402" />
-    <state x="2382" y="215" width="818" height="592" key="find.popup" timestamp="1614519507726">
-      <screen x="1920" y="0" width="1280" height="984" />
+    <state x="799" y="311" width="881" height="565" key="find.popup" timestamp="1614883839037">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="799" y="311" width="881" height="565" key="find.popup/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1614514520992" />
+    <state x="799" y="311" width="881" height="565" key="find.popup/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1614883839037" />
     <state x="2382" y="215" width="818" height="592" key="find.popup/0.0.1920.1040/1920.0.1280.984@1920.0.1280.984" timestamp="1614519507726" />
     <state x="2331" y="227" key="run.anything.popup" timestamp="1614412907219">
       <screen x="1920" y="0" width="1280" height="984" />
