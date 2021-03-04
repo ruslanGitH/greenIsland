@@ -37,7 +37,7 @@ public class AdminPageService {
         return ResponseEntity.status(HttpStatus.OK).body(familyRepo.findAll());
     }
 
-    public ResponseEntity<?> saveProduct(Product product) throws IOException {
+    public ResponseEntity<?> saveProduct(Product product) {
 //        File dir = new File("/upload");
 //        dir.mkdir();
 //        ObjectMapper mapper = new ObjectMapper();

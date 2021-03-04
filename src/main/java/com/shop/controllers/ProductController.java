@@ -17,9 +17,13 @@ public class ProductController {
     @Autowired
     private MainPageService mainPageService;
 
+    //    @RequestMapping(value = "admin/product", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+////    public ResponseEntity<?> saveProduct(@ModelAttribute ProductDto file) throws IOException {
+//    public ResponseEntity<?> saveProduct(@RequestBody Product product) throws IOException {
+//        return adminPageService.saveProduct(product);
+//    }
     @RequestMapping(value = "admin/product", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-//    public ResponseEntity<?> saveProduct(@ModelAttribute ProductDto file) throws IOException {
-    public ResponseEntity<?> saveProduct(@RequestBody Product product) throws IOException {
+    public ResponseEntity<?> saveProduct(@RequestBody Product product) {
         return adminPageService.saveProduct(product);
     }
 
@@ -28,10 +32,10 @@ public class ProductController {
         return adminPageService.deleteProduct(productId);
     }
 
-    @RequestMapping(value = "admin/product", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    public ResponseEntity<?> changeProductStatus(@RequestBody ProductChangeStatus changeStatus) {
-        return adminPageService.changeProductStatus(changeStatus.getId(), changeStatus.isActive());
-    }
+//    @RequestMapping(value = "admin/productChangeStatus", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+//    public ResponseEntity<?> changeProductStatus(@RequestBody ProductChangeStatus changeStatus) {
+//        return adminPageService.changeProductStatus(changeStatus.getId(), changeStatus.isActive());
+//    }
 
 
     @RequestMapping(value = "admin/product", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
