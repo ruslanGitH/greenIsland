@@ -17,13 +17,6 @@ public class RegistrationController {
 
     @RequestMapping(value = "registration", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity<?> addUser(@RequestBody Client user) {
-//        user.setRole(Role.ADMIN);
         return clientService.addClient(user);
     }
-
-
-//    @GetMapping("/registration")
-//    public String registrationPage(){
-//        return "registration";
-//    }
 }

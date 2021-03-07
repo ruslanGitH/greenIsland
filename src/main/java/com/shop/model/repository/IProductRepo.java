@@ -11,6 +11,8 @@ import java.util.List;
 @Repository
 public interface IProductRepo extends JpaRepository<Product, Long> {
     List<Product> findByActiveIsTrue();
+
     List<Product> findByCategoryIs(Category category);
+
     List<Product> findByFamilyIs(Family family);
 }

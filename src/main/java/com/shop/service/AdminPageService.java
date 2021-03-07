@@ -1,19 +1,13 @@
 package com.shop.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.shop.model.dto.ProductDto;
 import com.shop.model.entity.*;
 import com.shop.model.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import sun.misc.IOUtils;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.List;
 
 @Service

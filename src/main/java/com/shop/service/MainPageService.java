@@ -19,10 +19,6 @@ public class MainPageService {
     @Autowired
     private ICollageRepo collageRepo;
 
-//    public ResponseEntity<?> getAllProductsList() {
-//        return ResponseEntity.status(HttpStatus.OK).body(productRepo.findAll());
-//    }
-
     public ResponseEntity<?> getActiveProducts() {
         return ResponseEntity.status(HttpStatus.OK).body(productRepo.findByActiveIsTrue());
     }
@@ -40,24 +36,6 @@ public class MainPageService {
     }
 
     public ResponseEntity<?> getAllProductsList() throws IOException {
-//        List<Product> all = productRepo.findAll();
-//        List<ProductWithImage> productWithImages = new ArrayList<>();
-//        File dir = new File("/upload");
-//        for (Product product : all) {
-//            if (product.getImage() != null) {
-//                File file = new File(dir.getAbsolutePath()+"\\"+product.getImage());
-//                try {
-//                    BufferedImage bufferedImage = ImageIO.read(file);
-//                    WritableRaster writableRaster = bufferedImage.getRaster();
-//                    DataBufferByte dataBufferByte = (DataBufferByte) writableRaster.getDataBuffer();
-//                    productWithImages.add(new ProductWithImage(product, dataBufferByte.getData()));
-//                } catch (Exception e) {
-//                    productWithImages.add(new ProductWithImage(product, null));
-//                }
-//            } else
-//                productWithImages.add(new ProductWithImage(product, null));
-//        }
-//        return ResponseEntity.status(HttpStatus.OK).body(productWithImages);
         return ResponseEntity.status(HttpStatus.OK).body(productRepo.findAll());
     }
 }

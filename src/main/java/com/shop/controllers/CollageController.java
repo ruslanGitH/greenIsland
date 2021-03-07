@@ -21,7 +21,6 @@ public class CollageController {
 
     @GetMapping("/collage")
     public ResponseEntity<?> getCollage() {
-//        ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
         return mainPageService.getCollage();
     }
 }

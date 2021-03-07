@@ -1,6 +1,5 @@
 package com.shop.controllers;
 
-import com.shop.model.dto.ProductChangeStatus;
 import com.shop.model.entity.Product;
 import com.shop.service.AdminPageService;
 import com.shop.service.MainPageService;
@@ -17,11 +16,7 @@ public class ProductController {
     @Autowired
     private MainPageService mainPageService;
 
-    //    @RequestMapping(value = "admin/product", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-////    public ResponseEntity<?> saveProduct(@ModelAttribute ProductDto file) throws IOException {
-//    public ResponseEntity<?> saveProduct(@RequestBody Product product) throws IOException {
-//        return adminPageService.saveProduct(product);
-//    }
+
     @RequestMapping(value = "admin/product", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity<?> saveProduct(@RequestBody Product product) {
         return adminPageService.saveProduct(product);
@@ -32,15 +27,8 @@ public class ProductController {
         return adminPageService.deleteProduct(productId);
     }
 
-//    @RequestMapping(value = "admin/productChangeStatus", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-//    public ResponseEntity<?> changeProductStatus(@RequestBody ProductChangeStatus changeStatus) {
-//        return adminPageService.changeProductStatus(changeStatus.getId(), changeStatus.isActive());
-//    }
-
-
     @RequestMapping(value = "admin/product", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
     public ResponseEntity<?> updateProduct(@RequestBody Product product) throws IOException {
-//        return ResponseEntity.ok().body(null);
         return adminPageService.updateProduct(product);
     }
 
@@ -58,11 +46,4 @@ public class ProductController {
     public ResponseEntity<?> getProductWithId(@PathVariable("productId") Long productId) {
         return mainPageService.getProduct(productId);
     }
-
-//    @GetMapping("/product/img/{name}")
-//    public ResponseEntity<byte[]> getProductWithId(@PathVariable("name") String name, final HttpServletResponse response) throws IOException {
-//        if (!name.equals("null"))
-//            return adminPageService.getPhotoByName(name, response);
-//        else return ResponseEntity.status(HttpStatus.OK).body(null);
-//    }
 }

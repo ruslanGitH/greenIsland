@@ -30,14 +30,17 @@ public class ClientOrderController {
     public ResponseEntity<?> getClientOrders() {
         return orderService.getClientOrders();
     }
+
     @GetMapping("/admin/newClientOrders")
     public ResponseEntity<?> getNewClientOrders() {
         return orderService.getNewClientOrders();
     }
+
     @GetMapping("/admin/processingClientOrders")
     public ResponseEntity<?> getProcessingClientOrders() {
         return orderService.getProcessingClientOrders();
     }
+
     @GetMapping("/admin/executedClientOrders")
     public ResponseEntity<?> getExecutedClientOrders() {
         return orderService.getExecutedClientOrders();
@@ -48,6 +51,7 @@ public class ClientOrderController {
         mailService.connectWithAdmin(clientConnectInfo.getMail(), clientConnectInfo.getClientName(), clientConnectInfo.getMessageText());
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
+
     @RequestMapping(value = "/admin/changeStatus/", method = RequestMethod.POST)
     public ResponseEntity<?> changeStatus(@RequestBody ChangeStatus changeStatus) {
         return orderService.changeStatus(changeStatus);

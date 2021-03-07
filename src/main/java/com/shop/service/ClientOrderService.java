@@ -95,7 +95,7 @@ public class ClientOrderService {
             clientOrderBoard.setStatus(order.getStatus());
             clientOrderBoard.setDateTime(order.getDate());
             clientOrderBoard.setPrice(order.getPrice());
-            String name = order.getClient().getLastName().equals(order.getClient().getFirstName()) ? order.getClient().getLastName() : order.getClient().getLastName()+ " " + (order.getClient().getFirstName());
+            String name = order.getClient().getLastName().equals(order.getClient().getFirstName()) ? order.getClient().getLastName() : order.getClient().getLastName() + " " + (order.getClient().getFirstName());
             clientOrderBoard.setName(name);
 
             List<OrdersDto> ordersDto = new ArrayList<>();
@@ -112,10 +112,10 @@ public class ClientOrderService {
     }
 
     public ResponseEntity<?> changeStatus(ChangeStatus changeStatus) {
-            ClientOrder clientOrder = clientOrderRepo.findById(changeStatus.getId()).get();
-            clientOrder.setStatus(changeStatus.getStatus());
-            clientOrderRepo.save(clientOrder);
-            return ResponseEntity.status(HttpStatus.OK).body(null);
+        ClientOrder clientOrder = clientOrderRepo.findById(changeStatus.getId()).get();
+        clientOrder.setStatus(changeStatus.getStatus());
+        clientOrderRepo.save(clientOrder);
+        return ResponseEntity.status(HttpStatus.OK).body(null);
 
     }
 }
