@@ -18,7 +18,7 @@ public class MailService {
     @Autowired
     private IProductRepo productRepo;
 
-    public void send(ClientOrder orders) {
+    public void orderMake(ClientOrder orders) {
         String clientMessage = String.format("Добрый день! Ваш заказ принят! Ожидайте звонка на указанный вами номер - %s для подтверждения заказа.", orders.getClient().getPhoneNumber());
         mailSender.send(orders.getClient().getEmail(), "Зелёный остров", clientMessage);
         StringBuilder builder = new StringBuilder();
@@ -30,7 +30,7 @@ public class MailService {
         mailSender.send(clientRepo.findByRole(Role.ADMIN).getEmail(), "Новый заказ", bossMassage);
     }
 
-    public void connectWithAdmin(String mail, String name, String text) {
+    public void contactForm(String mail, String name, String text) {
         mailSender.sendForConnect(clientRepo.findByRole(Role.ADMIN).getEmail(), mail, name, text);
     }
 }

@@ -22,6 +22,7 @@ public class ClientOrderController {
 
     @RequestMapping(value = "clientOrder", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity<?> addOrder(@RequestBody ClientOrder orders) {
+        mailService.orderMake(orders);
         orderService.addClientOrder(orders);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
@@ -48,7 +49,7 @@ public class ClientOrderController {
 
     @RequestMapping(value = "connectWithAdmin", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity<?> connectWithAdmin(@RequestBody ClientConnectInfo clientConnectInfo) {
-        mailService.connectWithAdmin(clientConnectInfo.getMail(), clientConnectInfo.getClientName(), clientConnectInfo.getMessageText());
+        mailService.contactForm(clientConnectInfo.getMail(), clientConnectInfo.getClientName(), clientConnectInfo.getMessageText());
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 

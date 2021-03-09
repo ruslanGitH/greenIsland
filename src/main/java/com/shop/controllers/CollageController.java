@@ -24,3 +24,4 @@ public class CollageController {
         return mainPageService.getCollage();
     }
 }
+
