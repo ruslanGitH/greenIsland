@@ -40,6 +40,7 @@ public class ClientOrderService {
             clientOrderBoard.setStatus(order.getStatus());
             clientOrderBoard.setPrice(order.getPrice());
             clientOrderBoard.setName(order.getClient().getLastName());
+            clientOrderBoard.setComment(order.getComment());
 
             List<OrdersDto> ordersDto = new ArrayList<>();
 

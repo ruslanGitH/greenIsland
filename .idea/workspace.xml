@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0676e0a1-37dd-4777-8776-9e757cee14bd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/service/ClientOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/service/ClientOrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/service/MailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/service/MailSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +137,7 @@
       <workItem from="1614517662417" duration="16983000" />
       <workItem from="1614962112138" duration="4260000" />
       <workItem from="1615056617722" duration="1945000" />
-      <workItem from="1615125231067" duration="14027000" />
+      <workItem from="1615125231067" duration="18381000" />
     </task>
     <task id="LOCAL-00001" summary="controllers created for the main page">
       <created>1612105907538</created>
@@ -330,10 +327,10 @@
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1615192592225" />
     <state x="2335" y="213" width="672" height="642" key="search.everywhere.popup/0.0.1920.1040/1920.0.1280.984@1920.0.1280.984" timestamp="1614519340517" />
-    <state x="682" y="431" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1613164467219">
+    <state x="682" y="431" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1615398399482">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="682" y="431" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1613164467219" />
+    <state x="682" y="431" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1615398399482" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/accessing_data_mysql$GreenIslandApplication.ic" NAME="GreenIslandApplication Coverage Results" MODIFIED="1614015809773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

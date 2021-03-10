@@ -16,4 +16,5 @@ public class ClientOrderBoard {
     private double price;
     private LocalDateTime dateTime;
     private String name;
+    private String comment;
 }
