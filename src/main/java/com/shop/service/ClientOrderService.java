@@ -92,6 +92,7 @@ public class ClientOrderService {
             clientOrderBoard.setStatus(order.getStatus());
             clientOrderBoard.setDateTime(order.getDate());
             clientOrderBoard.setPrice(order.getPrice());
+            clientOrderBoard.setComment(order.getComment());
             String name = order.getClient().getLastName().equals(order.getClient().getFirstName()) ? order.getClient().getLastName() : order.getClient().getLastName() + " " + (order.getClient().getFirstName());
             clientOrderBoard.setName(name);
 
