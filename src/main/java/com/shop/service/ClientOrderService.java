@@ -9,7 +9,6 @@ import com.shop.model.enums.ClientOrderStatus;
 import com.shop.model.repository.IClientOrderRepo;
 import com.shop.model.repository.IClientRepo;
 import com.shop.model.repository.IOrderRepo;
-import com.shop.model.repository.IProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,13 +27,10 @@ public class ClientOrderService {
     private IClientRepo clientRepo;
     @Autowired
     private IOrderRepo orderRepo;
-    @Autowired
-    private IProductRepo productRepo;
 
     public ResponseEntity<?> getClientOrders() {
         List<ClientOrder> clientOrders = new ArrayList<>();
         clientOrderRepo.findAll().forEach(clientOrders::add);
-
         List<ClientOrderBoard> clientOrderBoards = new ArrayList<>();
         for (ClientOrder order : clientOrders) {
             ClientOrderBoard clientOrderBoard = new ClientOrderBoard();

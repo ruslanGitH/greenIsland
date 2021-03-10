@@ -14,23 +14,21 @@ public class MailService {
     @Autowired
     private MailSender mailSender;
     @Autowired
-    private IClientRepo clientRepo;
-    @Autowired
     private IProductRepo productRepo;
 
     public void orderMake(ClientOrder orders) {
-        String clientMessage = String.format("Добрый день! Ваш заказ принят! Ожидайте звонка на указанный вами номер - %s для подтверждения заказа.", orders.getClient().getPhoneNumber());
-        mailSender.send(orders.getClient().getEmail(), "Зелёный остров", clientMessage);
         StringBuilder builder = new StringBuilder();
         for (Orders order : orders.getOrders()) {
             Product product = productRepo.findById(order.getProduct().getId()).get();
             builder.append(product.getName()).append(" - ").append(order.getCount()).append(" еденицы.  Цена - ").append(product.getPrice()).append("\n");
         }
-        String bossMassage = String.format("Новый заказ. Номер телефон  клиента %s. \n Заказ: \n %s \n", orders.getClient().getPhoneNumber(), builder.toString());
-        mailSender.send(clientRepo.findByRole(Role.ADMIN).getEmail(), "Новый заказ", bossMassage);
+
+        String message = String.format("Добрый день!\n Ваш заказ принят!\n Ваш заказ: \n %s. \n  Ожидайте звонка на указанный вами номер - %s для подтверждения заказа.",
+              builder.toString(),  orders.getClient().getPhoneNumber());
+        mailSender.send(orders.getClient().getEmail(), "Зелёный остров", message);
     }
 
     public void contactForm(String mail, String name, String text) {
-        mailSender.sendForConnect(clientRepo.findByRole(Role.ADMIN).getEmail(), mail, name, text);
+        mailSender.sendForConnect(mail, name, text);
     }
 }

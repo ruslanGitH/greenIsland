@@ -18,16 +18,15 @@ public class MailSender {
         mailMessage.setFrom(username);
         mailMessage.setTo(emailTo);
         mailMessage.setSubject(subject);
-        String.format("Сообщение от %s. \n%s", subject, message);
-        mailMessage.setText(message);
+        mailMessage.setText(String.format("Сообщение от %s. \n%s", subject, message));
 
         javaMailSender.send(mailMessage);
     }
 
-    public void sendForConnect(String adminMail, String clientMail, String clientName, String messageText) {
+    public void sendForConnect(String clientMail, String clientName, String messageText) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setFrom(username);
-        mailMessage.setTo(adminMail);
+        mailMessage.setTo("info@green-land-store.ru");
         mailMessage.setSubject("Сообщение с формы связи");
         mailMessage.setText(String.format("Сообщение от %s (email - %s). \n%s", clientName, clientMail, messageText));
         javaMailSender.send(mailMessage);
