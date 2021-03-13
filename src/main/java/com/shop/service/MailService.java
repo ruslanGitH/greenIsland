@@ -3,8 +3,6 @@ package com.shop.service;
 import com.shop.model.entity.ClientOrder;
 import com.shop.model.entity.Orders;
 import com.shop.model.entity.Product;
-import com.shop.model.enums.Role;
-import com.shop.model.repository.IClientRepo;
 import com.shop.model.repository.IProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +22,7 @@ public class MailService {
         }
 
         String message = String.format("Добрый день!\n Ваш заказ принят!\n Ваш заказ: \n %s. \n  Ожидайте звонка на указанный вами номер - %s для подтверждения заказа.",
-              builder.toString(),  orders.getClient().getPhoneNumber());
+                builder.toString(), orders.getClient().getPhoneNumber());
         mailSender.send(orders.getClient().getEmail(), "Зелёный остров", message);
     }
 

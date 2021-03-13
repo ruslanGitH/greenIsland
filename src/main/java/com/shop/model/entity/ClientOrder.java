@@ -18,8 +18,6 @@ public class ClientOrder {
     private double price;
     private LocalDateTime date;
     private String address;
-    //    private LocalDateTime deliveryBeginDate;
-//    private LocalDateTime deliveryEndDate;
     private String comment;
 
     @ManyToOne

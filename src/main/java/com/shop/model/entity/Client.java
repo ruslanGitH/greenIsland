@@ -18,13 +18,9 @@ public class Client {
     private String phoneNumber;
     private String email;
 
-//    @OneToMany(mappedBy = "client")
-//    private List<ClientOrder> clientOrder = new ArrayList<>();
-
     private String username;
     private String password;
     private boolean active;
-
 
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "client"))
     @Enumerated(EnumType.STRING)
