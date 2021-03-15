@@ -29,14 +29,12 @@ public class MailSender {
         for (Orders order : clientOrder.getOrders()) {
             Product product = productRepo.findById(order.getProduct().getId()).get();
             tr.append("<tr style=\"border-collapse:collapse\">" +
-                    "<td style=\"padding:5px 10px 5px 0;Margin:0\" width=\"70%\" align=\"left\">" +
-                    "<p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">"
+                    "<td style=\"padding:5px 0;Margin:0\" width=\"60%\" align=\"left\"><p style=\"Margin:0; width=\"60%\"; -webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">"
                     + product.getName() + "</p></td>" +
-                    "<td style=\"padding:5px 10px 5px 0;Margin:0\" width=\"10%\" align=\"left\">" +
-                    "<td style=\"padding:5px 0;Margin:0\" width=\"10%\" align=\"left\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">" +
-                    order.getCount() + "</p></td>" +
-                    "<td style=\"padding:5px 0;Margin:0\" width=\"10%\" align=\"left\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">" +
+                    "<td style=\"padding:5px 0;Margin:0\" width=\"15%\" align=\"center\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">" +
                     product.getPrice() + "</p></td>" +
+                    "<td style=\"padding:5px 0;Margin:0\" width=\"25%\" align=\"center\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">" +
+                    order.getCount() + "</p></td>" +
                     "</tr>");
         }
 
@@ -219,12 +217,14 @@ public class MailSender {
                 "                  <td valign=\"top\" align=\"center\" style=\"padding:0;Margin:0;width:530px\"> \n" +
                 "                   <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" role=\"presentation\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\"> \n" +
                 "                     <tr style=\"border-collapse:collapse\"> \n" +
+                "                         <tr style=\"border-collapse:collapse\"> \n" +
+                "                          <td  width=\"100%\" style=\"padding-left:10px;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">"+ "  "+ "Номер заказа&nbsp;#" + clientOrder.getId() + "</h4></td></tr> \n" +
+                "                         <tr style=\"border-collapse:collapse\"> \n" +
                 "                      <td bgcolor=\"#eeeeee\" align=\"left\" style=\"Margin:0;padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px\"> \n" +
                 "                       <table style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px\" class=\"cke_show_border\" cellspacing=\"1\" cellpadding=\"1\" border=\"0\" align=\"left\" role=\"presentation\"> \n" +
-                "                         <tr style=\"border-collapse:collapse\"> \n" +
-                "                          <td width=\"70%\" style=\"padding:0;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">Номер заказа&nbsp;#" + clientOrder.getId() + "</h4></td> \n" +
-                "                          <td width=\"10%\" style=\"padding:0;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">"+"Единиц"+"</h4></td> \n" +
-                "                          <td width=\"10%\" style=\"padding:0;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">"+"Цена"+"</h4></td> \n" +
+                "                          <td width=\"60%\" style=\"padding:0;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">Наименование товара</h4></td> \n" +
+                "                          <td width=\"15%\" align=\"center\"; style=\"padding:0;Margin:10\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">" + "Цена" + "</h4></td> \n" +
+                "                          <td width=\"25%\" align=\"center\"; style=\"padding:0;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">" + "Количество" + "</h4></td> \n" +
                 "                         </tr> \n" +
                 "                       </table></td> \n" +
                 "                     </tr> \n" +
