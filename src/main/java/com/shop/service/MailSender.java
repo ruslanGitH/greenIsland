@@ -27,11 +27,12 @@ public class MailSender {
         mailMessage.setFrom(username);
         mailMessage.setTo(username);
         mailMessage.setSubject("Новый заказ!");
+
         mailMessage.setText(String.format("Поступил новый заказ. Информация: " +
                 "\nИмя клиента: %s " +
                 "\nНомер телефона: %s" +
                 "\nПочта: %s " +
-                "\nЗаказ: %s", order.getClient().getLastName() + " " + order.getClient().getFirstName(), order.getClient().getPhoneNumber(),
+                "\nЗаказ: %s", order.getClient().getFirstName(), order.getClient().getPhoneNumber(),
                 order.getClient().getEmail(), message));
         javaMailSender.send(mailMessage);
 
