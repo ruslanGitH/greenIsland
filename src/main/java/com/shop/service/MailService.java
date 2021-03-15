@@ -18,7 +18,7 @@ public class MailService {
         StringBuilder builder = new StringBuilder();
         for (Orders order : orders.getOrders()) {
             Product product = productRepo.findById(order.getProduct().getId()).get();
-            builder.append(product.getName()).append(" - ").append(order.getCount()).append(" еденицы.  Цена - ").append(product.getPrice()).append("\n");
+            builder.append(product.getName()).append(" - ").append(order.getCount()).append(" единицы.  Цена - ").append(product.getPrice()).append("\n");
         }
 
         String message = String.format("Добрый день!\n Ваш заказ принят!\n Ваш заказ: \n %s. \n  Ожидайте звонка на указанный вами номер - %s для подтверждения заказа.",
