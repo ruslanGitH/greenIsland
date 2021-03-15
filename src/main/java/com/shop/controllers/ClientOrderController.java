@@ -24,8 +24,8 @@ public class ClientOrderController {
 
     @RequestMapping(value = "clientOrder", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity<?> addOrder(@RequestBody ClientOrder orders) throws MessagingException {
-        mailService.orderMake(orders);
         orderService.addClientOrder(orders);
+        mailService.orderMake(orders);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 

@@ -4,6 +4,7 @@ import com.shop.model.entity.ClientOrder;
 import com.shop.model.entity.Orders;
 import com.shop.model.entity.Product;
 import com.shop.model.repository.IProductRepo;
+import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +28,9 @@ public class MailService {
             builder.append(product.getName()).append(" - ").append(order.getCount()).append(" единицы.  Цена - ").append(product.getPrice()).append("\n");
 
         }
-//        mailSender.send(orders.getClient().getEmail(), orders.getClient().getPhoneNumber(), productList, String.valueOf(orders.getPrice()));
-        mailSender.send(orders.getClient().getEmail(), orders.getClient().getPhoneNumber(), productList, String.valueOf(orders.getPrice()), orders.getAddress(), orders.getComment());
+//        mailSender.send(orders.getClient().getEmail(), orders.getClient().getPhoneNumber(), productList, String.valueOf(orders.getPrice()),
+//                orders.getAddress(), orders.getComment(), orders.getId().toString(), orders);
+        mailSender.send(orders);
         mailSender.sendAdminMail(orders, builder.toString());
     }
 

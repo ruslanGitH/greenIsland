@@ -1,7 +1,9 @@
 package com.shop.service;
 
 import com.shop.model.entity.ClientOrder;
+import com.shop.model.entity.Orders;
 import com.shop.model.entity.Product;
+import com.shop.model.repository.IProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -11,30 +13,34 @@ import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.util.List;
 
 @Service
 public class MailSender {
     @Autowired
     private JavaMailSender javaMailSender;
+    @Autowired
+    private IProductRepo productRepo;
     @Value("${spring.mail.username}")
     private String username;
 
-    public void send(String emailTo, String phoneNumber, List<Product> products, String sum, String address, String comment) throws MessagingException {
-
-
+    public void send(ClientOrder clientOrder) throws MessagingException {
         StringBuilder tr = new StringBuilder();
-        for (Product product : products) {
+
+        for (Orders order : clientOrder.getOrders()) {
+            Product product = productRepo.findById(order.getProduct().getId()).get();
             tr.append("<tr style=\"border-collapse:collapse\">" +
-                    "<td style=\"padding:5px 10px 5px 0;Margin:0\" width=\"80%\" align=\"left\">" +
+                    "<td style=\"padding:5px 10px 5px 0;Margin:0\" width=\"70%\" align=\"left\">" +
                     "<p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">"
-                    + product.getName()+ "</p></td>" +
-                    "<td style=\"padding:5px 0;Margin:0\" width=\"20%\" align=\"left\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">" +
-                    product.getPrice()+"</p></td>" +
+                    + product.getName() + "</p></td>" +
+                    "<td style=\"padding:5px 10px 5px 0;Margin:0\" width=\"10%\" align=\"left\">" +
+                    "<td style=\"padding:5px 0;Margin:0\" width=\"10%\" align=\"left\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">" +
+                    order.getCount() + "</p></td>" +
+                    "<td style=\"padding:5px 0;Margin:0\" width=\"10%\" align=\"left\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">" +
+                    product.getPrice() + "</p></td>" +
                     "</tr>");
         }
 
-        String html ="<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+        String html = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                 "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" style=\"width:100%;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0\">\n" +
                 " <head> \n" +
                 "  <meta charset=\"UTF-8\"> \n" +
@@ -193,7 +199,7 @@ public class MailSender {
                 "                      <td align=\"center\" style=\"padding:0;Margin:0;padding-bottom:10px\"><h2 style=\"Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:30px;font-style:normal;font-weight:bold;color:#333333\">Спасибо за заказ!</h2></td> \n" +
                 "                     </tr> \n" +
                 "                     <tr style=\"border-collapse:collapse\"> \n" +
-                "                      <td align=\"left\" style=\"padding:0;Margin:0;padding-top:15px;padding-bottom:20px\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px\">Нам очень приятно, что Вы сделали заказа в нашем садовом центре! В ближайшее время менеджер свяжется с Вами по телефону " + phoneNumber +"</p></td> \n" +
+                "                      <td align=\"left\" style=\"padding:0;Margin:0;padding-top:15px;padding-bottom:20px\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px\">Нам очень приятно, что Вы сделали заказа в нашем садовом центре! В ближайшее время менеджер свяжется с Вами по телефону " + clientOrder.getClient().getPhoneNumber() + "</p></td> \n" +
                 "                     </tr> \n" +
                 "                   </table></td> \n" +
                 "                 </tr> \n" +
@@ -216,8 +222,9 @@ public class MailSender {
                 "                      <td bgcolor=\"#eeeeee\" align=\"left\" style=\"Margin:0;padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px\"> \n" +
                 "                       <table style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px\" class=\"cke_show_border\" cellspacing=\"1\" cellpadding=\"1\" border=\"0\" align=\"left\" role=\"presentation\"> \n" +
                 "                         <tr style=\"border-collapse:collapse\"> \n" +
-                "                          <td width=\"80%\" style=\"padding:0;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">Номер заказа&nbsp;#</h4></td> \n" +
-                "                          <td width=\"20%\" style=\"padding:0;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">2345678</h4></td> \n" +
+                "                          <td width=\"70%\" style=\"padding:0;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">Номер заказа&nbsp;#" + clientOrder.getId() + "</h4></td> \n" +
+                "                          <td width=\"10%\" style=\"padding:0;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">"+"Единиц"+"</h4></td> \n" +
+                "                          <td width=\"10%\" style=\"padding:0;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">"+"Цена"+"</h4></td> \n" +
                 "                         </tr> \n" +
                 "                       </table></td> \n" +
                 "                     </tr> \n" +
@@ -251,7 +258,7 @@ public class MailSender {
                 "                       <table style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px\" class=\"cke_show_border\" cellspacing=\"1\" cellpadding=\"1\" border=\"0\" align=\"left\" role=\"presentation\"> \n" +
                 "                         <tr style=\"border-collapse:collapse\"> \n" +
                 "                          <td width=\"80%\" style=\"padding:0;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">Итого</h4></td> \n" +
-                "                          <td width=\"20%\" style=\"padding:0;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">" + sum + "</h4></td> \n" +
+                "                          <td width=\"20%\" style=\"padding:0;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">" + clientOrder.getPrice() + "</h4></td> \n" +
                 "                         </tr> \n" +
                 "                       </table></td> \n" +
                 "                     </tr> \n" +
@@ -270,7 +277,7 @@ public class MailSender {
                 "                      <td align=\"left\" style=\"padding:0;Margin:0;padding-bottom:15px\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">Адрес доставки</h4></td> \n" +
                 "                     </tr> \n" +
                 "                     <tr style=\"border-collapse:collapse\"> \n" +
-                "                      <td align=\"left\" style=\"padding:0;Margin:0;padding-bottom:10px\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">"+address+"</p></td> \n" +
+                "                      <td align=\"left\" style=\"padding:0;Margin:0;padding-bottom:10px\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">" + clientOrder.getAddress() + "</p></td> \n" +
                 "                     </tr> \n" +
                 "                   </table></td> \n" +
                 "                 </tr> \n" +
@@ -284,7 +291,7 @@ public class MailSender {
                 "                      <td align=\"left\" style=\"padding:0;Margin:0;padding-bottom:15px\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">Комментарий к заказу</h4></td> \n" +
                 "                     </tr> \n" +
                 "                     <tr style=\"border-collapse:collapse\"> \n" +
-                "                      <td align=\"left\" style=\"padding:0;Margin:0\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">" +comment+ "</p></td> \n" +
+                "                      <td align=\"left\" style=\"padding:0;Margin:0\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">" + clientOrder.getComment() + "</p></td> \n" +
                 "                     </tr> \n" +
                 "                   </table></td> \n" +
                 "                 </tr> \n" +
@@ -340,7 +347,7 @@ public class MailSender {
 
         message.setFrom(username);
         message.setContent(html, "text/html; charset=utf-8");
-        helper.setTo(emailTo);
+        helper.setTo(clientOrder.getClient().getEmail());
         message.setSubject("Зелёный остров");
         javaMailSender.send(message);
     }

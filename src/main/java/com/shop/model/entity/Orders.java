@@ -11,7 +11,7 @@ public class Orders {
     protected Product product;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
     private int count;
     @ManyToOne
     @JoinColumn(name = "client_order_id")
