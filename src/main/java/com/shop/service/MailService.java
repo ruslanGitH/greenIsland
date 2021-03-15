@@ -7,6 +7,7 @@ import com.shop.model.repository.IProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class MailService {
     @Autowired
     private IProductRepo productRepo;
 
-    public void orderMake(ClientOrder orders) {
+    public void orderMake(ClientOrder orders) throws MessagingException {
         StringBuilder builder = new StringBuilder();
         List<Product> productList = new ArrayList<>();
         for (Orders order : orders.getOrders()) {

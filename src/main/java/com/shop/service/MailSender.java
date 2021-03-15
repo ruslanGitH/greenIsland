@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.util.List;
 
 @Service
@@ -17,18 +20,21 @@ public class MailSender {
     @Value("${spring.mail.username}")
     private String username;
 
-    public void send(String emailTo, String phoneNumber, List<Product> products, String sum, String address, String comment) {
+    public void send(String emailTo, String phoneNumber, List<Product> products, String sum, String address, String comment) throws MessagingException {
 
 
-        String tr = new String();
+        StringBuilder tr = new StringBuilder();
         for (Product product : products) {
-            tr = String.format("<tr style=\"border-collapse:collapse\"> \n" +
-                    "<td style=\"padding:5px 10px 5px 0;Margin:0\" width=\"80%\" align=\"left\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">%s</p></td> \n" +
-                    "<td style=\"padding:5px 0;Margin:0\" width=\"20%\" align=\"left\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">%s</p></td> \n" +
-                    "</tr> ", product.getName(), product.getPrice());
+            tr.append("<tr style=\"border-collapse:collapse\">" +
+                    "<td style=\"padding:5px 10px 5px 0;Margin:0\" width=\"80%\" align=\"left\">" +
+                    "<p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">"
+                    + product.getName()+ "</p></td>" +
+                    "<td style=\"padding:5px 0;Margin:0\" width=\"20%\" align=\"left\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">" +
+                    product.getPrice()+"</p></td>" +
+                    "</tr>");
         }
 
-        String html = String.format("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+        String html ="<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                 "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" style=\"width:100%;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0\">\n" +
                 " <head> \n" +
                 "  <meta charset=\"UTF-8\"> \n" +
@@ -187,7 +193,7 @@ public class MailSender {
                 "                      <td align=\"center\" style=\"padding:0;Margin:0;padding-bottom:10px\"><h2 style=\"Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:30px;font-style:normal;font-weight:bold;color:#333333\">Спасибо за заказ!</h2></td> \n" +
                 "                     </tr> \n" +
                 "                     <tr style=\"border-collapse:collapse\"> \n" +
-                "                      <td align=\"left\" style=\"padding:0;Margin:0;padding-top:15px;padding-bottom:20px\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px\">Нам очень приятно, что Вы сделали заказа в нашем садовом центре! В ближайшее время менеджер свяжется с Вами по телефону %s</p></td> \n" +
+                "                      <td align=\"left\" style=\"padding:0;Margin:0;padding-top:15px;padding-bottom:20px\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px\">Нам очень приятно, что Вы сделали заказа в нашем садовом центре! В ближайшее время менеджер свяжется с Вами по телефону " + phoneNumber +"</p></td> \n" +
                 "                     </tr> \n" +
                 "                   </table></td> \n" +
                 "                 </tr> \n" +
@@ -227,7 +233,7 @@ public class MailSender {
                 "                   <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" role=\"presentation\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\"> \n" +
                 "                     <tr style=\"border-collapse:collapse\"> \n" +
                 "                      <td align=\"left\" style=\"Margin:0;padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px\"> \n" +
-                "                       <table style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px\" class=\"cke_show_border\" cellspacing=\"1\" cellpadding=\"1\" border=\"0\" align=\"left\" role=\"presentation\"> \n %s" +
+                "                       <table style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px\" class=\"cke_show_border\" cellspacing=\"1\" cellpadding=\"1\" border=\"0\" align=\"left\" role=\"presentation\"> \n" + tr +
                 "                       </table></td> \n" +
                 "                     </tr> \n" +
                 "                   </table></td> \n" +
@@ -245,7 +251,7 @@ public class MailSender {
                 "                       <table style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px\" class=\"cke_show_border\" cellspacing=\"1\" cellpadding=\"1\" border=\"0\" align=\"left\" role=\"presentation\"> \n" +
                 "                         <tr style=\"border-collapse:collapse\"> \n" +
                 "                          <td width=\"80%\" style=\"padding:0;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">Итого</h4></td> \n" +
-                "                          <td width=\"20%\" style=\"padding:0;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">%s</h4></td> \n" +
+                "                          <td width=\"20%\" style=\"padding:0;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">" + sum + "</h4></td> \n" +
                 "                         </tr> \n" +
                 "                       </table></td> \n" +
                 "                     </tr> \n" +
@@ -264,7 +270,7 @@ public class MailSender {
                 "                      <td align=\"left\" style=\"padding:0;Margin:0;padding-bottom:15px\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">Адрес доставки</h4></td> \n" +
                 "                     </tr> \n" +
                 "                     <tr style=\"border-collapse:collapse\"> \n" +
-                "                      <td align=\"left\" style=\"padding:0;Margin:0;padding-bottom:10px\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">%s</p></td> \n" +
+                "                      <td align=\"left\" style=\"padding:0;Margin:0;padding-bottom:10px\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">"+address+"</p></td> \n" +
                 "                     </tr> \n" +
                 "                   </table></td> \n" +
                 "                 </tr> \n" +
@@ -278,7 +284,7 @@ public class MailSender {
                 "                      <td align=\"left\" style=\"padding:0;Margin:0;padding-bottom:15px\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">Комментарий к заказу</h4></td> \n" +
                 "                     </tr> \n" +
                 "                     <tr style=\"border-collapse:collapse\"> \n" +
-                "                      <td align=\"left\" style=\"padding:0;Margin:0\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">%s</p></td> \n" +
+                "                      <td align=\"left\" style=\"padding:0;Margin:0\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px\">" +comment+ "</p></td> \n" +
                 "                     </tr> \n" +
                 "                   </table></td> \n" +
                 "                 </tr> \n" +
@@ -317,11 +323,6 @@ public class MailSender {
                 "               <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\"> \n" +
                 "                 <tr style=\"border-collapse:collapse\"> \n" +
                 "                  <td valign=\"top\" align=\"center\" style=\"padding:0;Margin:0;width:560px\"> \n" +
-                "                   <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" role=\"presentation\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\"> \n" +
-                "                     <tr style=\"border-collapse:collapse\"> \n" +
-                "                      <td class=\"es-infoblock made_with\" align=\"center\" style=\"padding:0;Margin:0;line-height:120%;font-size:0;color:#CCCCCC\"><a target=\"_blank\" href=\"https://viewstripo.email/?utm_source=templates&utm_medium=email&utm_campaign=accessory&utm_content=trigger_newsletter3\" style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:none;color:#CCCCCC;font-size:12px\"><img src=\"https://oqmnbu.stripocdn.email/content/guids/CABINET_9df86e5b6c53dd0319931e2447ed854b/images/64951510234941531.png\" alt width=\"125\" style=\"display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic\"></a></td> \n" +
-                "                     </tr> \n" +
-                "                   </table></td> \n" +
                 "                 </tr> \n" +
                 "               </table></td> \n" +
                 "             </tr> \n" +
@@ -332,16 +333,16 @@ public class MailSender {
                 "   </table> \n" +
                 "  </div>  \n" +
                 " </body>\n" +
-                "</html>", phoneNumber, tr, sum, address, comment);
+                "</html>";
 
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setFrom(username);
-        mailMessage.setTo(emailTo);
-        mailMessage.setSubject("Зелёный остров");
-        mailMessage.setText(html);
-        javaMailSender.send(mailMessage);
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
-
+        message.setFrom(username);
+        message.setContent(html, "text/html; charset=utf-8");
+        helper.setTo(emailTo);
+        message.setSubject("Зелёный остров");
+        javaMailSender.send(message);
     }
 
 

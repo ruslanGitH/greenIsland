@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
+
 
 @RestController
 public class ClientOrderController {
@@ -21,7 +23,7 @@ public class ClientOrderController {
 
 
     @RequestMapping(value = "clientOrder", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    public ResponseEntity<?> addOrder(@RequestBody ClientOrder orders) {
+    public ResponseEntity<?> addOrder(@RequestBody ClientOrder orders) throws MessagingException {
         mailService.orderMake(orders);
         orderService.addClientOrder(orders);
         return ResponseEntity.status(HttpStatus.OK).body(null);
