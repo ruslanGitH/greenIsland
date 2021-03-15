@@ -24,6 +24,7 @@ public class MailService {
         String message = String.format("Добрый день!\n Ваш заказ принят!\n Ваш заказ: \n %s. \n  Ожидайте звонка на указанный вами номер - %s для подтверждения заказа.",
                 builder.toString(), orders.getClient().getPhoneNumber());
         mailSender.send(orders.getClient().getEmail(), "Зелёный остров", message);
+        mailSender.sendAdminMail(orders, message);
     }
 
     public void contactForm(String mail, String name, String text) {

@@ -1,5 +1,6 @@
 package com.shop.service;
 
+import com.shop.model.entity.ClientOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -19,9 +20,23 @@ public class MailSender {
         mailMessage.setTo(emailTo);
         mailMessage.setSubject(subject);
         mailMessage.setText(String.format("Сообщение от %s. \n%s", subject, message));
-
         javaMailSender.send(mailMessage);
     }
+    public void sendAdminMail(ClientOrder order , String message){
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setFrom(username);
+        mailMessage.setTo(username);
+        mailMessage.setSubject("Новый заказ!");
+        mailMessage.setText(String.format("Поступил новый заказ. Информация: " +
+                "\nИмя клиента: %s " +
+                "\nНомер телефона: %s" +
+                "\nПочта: %s " +
+                "\nЗаказ: %s", order.getClient().getLastName() + " " + order.getClient().getFirstName(), order.getClient().getPhoneNumber(),
+                order.getClient().getEmail(), message));
+        javaMailSender.send(mailMessage);
+
+    }
+
 
     public void sendForConnect(String clientMail, String clientName, String messageText) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
