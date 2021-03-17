@@ -4,11 +4,9 @@ import com.shop.model.entity.ClientOrder;
 import com.shop.model.entity.Orders;
 import com.shop.model.entity.Product;
 import com.shop.model.repository.IProductRepo;
-import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +17,7 @@ public class MailService {
     @Autowired
     private IProductRepo productRepo;
 
-    public void orderMake(ClientOrder orders) throws MessagingException {
+    public void orderMake(ClientOrder orders) {
         StringBuilder builder = new StringBuilder();
         List<Product> productList = new ArrayList<>();
         for (Orders order : orders.getOrders()) {
@@ -28,10 +26,12 @@ public class MailService {
             builder.append(product.getName()).append(" - ").append(order.getCount()).append(" единицы.  Цена - ").append(product.getPrice()).append("\n");
 
         }
-//        mailSender.send(orders.getClient().getEmail(), orders.getClient().getPhoneNumber(), productList, String.valueOf(orders.getPrice()),
-//                orders.getAddress(), orders.getComment(), orders.getId().toString(), orders);
-        mailSender.send(orders);
-        mailSender.sendAdminMail(orders, builder.toString());
+        try {
+            mailSender.send(orders);
+            mailSender.sendAdminMail(orders, builder.toString());
+        } catch (Exception e) {
+            System.out.println("Ошибка при отправке сообщений на почту");
+        }
     }
 
     public void contactForm(String mail, String name, String text) {

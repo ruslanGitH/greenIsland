@@ -218,7 +218,7 @@ public class MailSender {
                 "                   <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" role=\"presentation\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\"> \n" +
                 "                     <tr style=\"border-collapse:collapse\"> \n" +
                 "                         <tr style=\"border-collapse:collapse\"> \n" +
-                "                          <td  width=\"100%\" style=\"padding-left:10px;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">"+ "  "+ "Номер заказа&nbsp;#" + clientOrder.getId() + "</h4></td></tr> \n" +
+                "                          <td  width=\"100%\" style=\"padding-left:10px;Margin:0\"><h4 style=\"Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif\">" + "  " + "Номер заказа&nbsp;#" + clientOrder.getId() + "</h4></td></tr> \n" +
                 "                         <tr style=\"border-collapse:collapse\"> \n" +
                 "                      <td bgcolor=\"#eeeeee\" align=\"left\" style=\"Margin:0;padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px\"> \n" +
                 "                       <table style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px\" class=\"cke_show_border\" cellspacing=\"1\" cellpadding=\"1\" border=\"0\" align=\"left\" role=\"presentation\"> \n" +

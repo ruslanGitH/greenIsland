@@ -8,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-
 @Service
 public class MainPageService {
     @Autowired
@@ -35,7 +33,7 @@ public class MainPageService {
         return ResponseEntity.status(HttpStatus.OK).body(productRepo.findById(productId));
     }
 
-    public ResponseEntity<?> getAllProductsList() throws IOException {
+    public ResponseEntity<?> getAllProductsList() {
         return ResponseEntity.status(HttpStatus.OK).body(productRepo.findAll());
     }
 }
